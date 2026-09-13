@@ -443,11 +443,6 @@ def render_products_page():
 
     st.link_button("🌐 View Official MRPL Products", "https://mahakoshalrefractories.com/products/", use_container_width=True)
     st.caption("Product information is presented from Mahakoshal Refractories' official website.")
-
-    # Live official catalogue keeps the actual product imagery and latest website content visible.
-    st.markdown("### Official Product Showcase")
-    components.iframe("https://mahakoshalrefractories.com/products/", height=980, scrolling=True)
-
     st.divider()
     st.markdown("### Product Categories")
     products_df = load_data("products", where="is_active = 1")
@@ -542,7 +537,7 @@ user_id, username, _, user_role, employee_id, _ = current_user
 st.sidebar.success(f"👤 {username}")
 st.sidebar.info(f"Role: {user_role}")
 
-if st.sidebar.button("🚪 Logout", use_container_width=True):
+if st.sidebar.button("🚪 Logout", use_container_width=True,type="primary"):
     st.session_state.logged_in = False
     st.session_state.user = None
     st.rerun()
