@@ -50,7 +50,6 @@ def hash_password(password):
 # ============================================================
 # USER AUTHENTICATION
 # ============================================================
-
 def authenticate_user(username, password):
 
     conn = get_connection()
@@ -60,9 +59,10 @@ def authenticate_user(username, password):
         SELECT
             id,
             username,
-            password,
+            password_hash,
             role,
-            status
+            employee_id,
+            is_active
         FROM users
         WHERE username = ?
         """,
@@ -78,11 +78,10 @@ def authenticate_user(username, password):
 
     if stored_password == hash_password(password):
 
-        if user[4] == "Active":
+        if user[5] == 1:
             return user
 
     return None
-
 
 # ============================================================
 # SESSION STATE
