@@ -104,6 +104,82 @@ if not st.session_state.logged_in:
     st.title("🏭 MRPL Smart Manufacturing System")
 
     st.subheader("🔐 Login")
+# ============================================================
+# OUR PRODUCTS - PUBLIC SECTION
+# ============================================================
+
+st.markdown("### 🌐 Our Products")
+
+if st.button(
+    "🌐 View Our Products",
+    use_container_width=True
+):
+    st.session_state.show_products = True
+
+
+if st.session_state.get("show_products", False):
+
+    st.markdown("---")
+    st.title("🏭 Mahakoshal Refractories")
+    st.subheader("Our Products")
+
+    category = st.selectbox(
+        "Select Product Category",
+        [
+            "All Products",
+            "Shaped Products",
+            "Unshaped Products"
+        ]
+    )
+
+    products = {
+        "Shaped Products": [
+            "Fireclay & High Alumina Bricks",
+            "Pre-Cast Pre-Fired (PCPF) Blocks",
+            "Silicon Carbide Bricks & Shapes",
+            "Acid-resistant Bricks"
+        ],
+        "Unshaped Products": [
+            "Dense Castables",
+            "Low & Ultra Low Cement Castables",
+            "Insulating Castables",
+            "Plastic Masses",
+            "High Alumina Cement & Binder",
+            "Grouting Materials",
+            "Mortars",
+            "Gunning Mixes"
+        ]
+    }
+
+    if category == "All Products":
+        selected_categories = products.keys()
+    else:
+        selected_categories = [category]
+
+    for product_category in selected_categories:
+
+        st.markdown(f"## {product_category}")
+
+        for product in products[product_category]:
+
+            with st.container(border=True):
+
+                st.markdown(f"### 📦 {product}")
+
+                st.write(
+                    "Product information and specifications "
+                    "will be displayed here."
+                )
+
+    st.markdown("---")
+
+    if st.button("⬅️ Back to Login", use_container_width=True):
+        st.session_state.show_products = False
+        st.rerun()
+
+# ============================================================
+# OUR PRODUCTS - PUBLIC SECTION END
+# ============================================================
 
     with st.form("login_form"):
 
