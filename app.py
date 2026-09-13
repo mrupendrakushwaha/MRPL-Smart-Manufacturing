@@ -5695,3 +5695,229 @@ if (
 # ============================================================
 # STEP 2AK END
 # ============================================================
+# ============================================================
+# FINAL UI POLISHING - CELL 1
+# ============================================================
+
+st.markdown(
+    """
+    <style>
+
+    /* Main application background */
+    .stApp {
+        background: #f8fafc;
+    }
+
+    /* Main content area */
+    .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        max-width: 1400px;
+    }
+
+    /* Headings */
+    h1, h2, h3 {
+        font-weight: 700;
+    }
+
+    /* Metric cards */
+    [data-testid="stMetric"] {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Buttons */
+    .stButton > button {
+        border-radius: 8px;
+        font-weight: 600;
+        min-height: 42px;
+    }
+
+    /* Input fields */
+    .stTextInput input,
+    .stNumberInput input,
+    .stSelectbox div,
+    .stTextArea textarea {
+        border-radius: 8px;
+    }
+
+    /* Dataframes */
+    [data-testid="stDataFrame"] {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    /* Alerts */
+    [data-testid="stAlert"] {
+        border-radius: 10px;
+    }
+
+    /* Sidebar */
+    [data-testid="stSidebar"] {
+        border-right: 1px solid #e5e7eb;
+    }
+
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# ============================================================
+# FINAL UI POLISHING - CELL 1 END
+# ============================================================
+# ============================================================
+# FINAL UI POLISHING - CELL 2
+# ============================================================
+
+st.markdown(
+    """
+    <div style="
+        padding: 18px 22px;
+        border-radius: 14px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        margin-bottom: 20px;
+    ">
+        <h1 style="margin:0;">
+            🏭 MRPL Smart Manufacturing
+        </h1>
+        <p style="
+            margin:6px 0 0 0;
+            font-size:16px;
+        ">
+            Smart Management & Quality Management System
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# ============================================================
+# FINAL UI POLISHING - CELL 2 END
+# ============================================================
+# ============================================================
+# FINAL UI POLISHING - CELL 3
+# ============================================================
+
+st.markdown(
+    """
+    <style>
+
+    /* Sidebar title */
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3 {
+        font-weight: 700;
+    }
+
+    /* Sidebar navigation spacing */
+    [data-testid="stSidebar"] .stRadio > div {
+        gap: 6px;
+    }
+
+    /* Section containers */
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        border-radius: 12px;
+    }
+
+    /* Tables */
+    [data-testid="stDataFrame"] {
+        margin-top: 8px;
+        margin-bottom: 15px;
+    }
+
+    /* Download buttons */
+    .stDownloadButton > button {
+        border-radius: 8px;
+        font-weight: 600;
+        min-height: 42px;
+    }
+
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# ============================================================
+# FINAL UI POLISHING - CELL 3 END
+# ============================================================
+# ============================================================
+# FINAL UI POLISHING - CELL 4
+# ============================================================
+
+# Footer
+st.markdown(
+    """
+    <div style="
+        text-align:center;
+        padding:18px 0 5px 0;
+        margin-top:30px;
+        border-top:1px solid #e5e7eb;
+        font-size:14px;
+        opacity:0.75;
+    ">
+        MRPL Smart Manufacturing & Quality Management System
+        <br>
+        © 2026 MRPL | Developed for Smart Manufacturing
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# ============================================================
+# FINAL UI POLISHING - CELL 4 END
+# ============================================================
+# ============================================================
+# FINAL UI POLISHING - CELL 5
+# ============================================================
+
+st.markdown(
+    """
+    <style>
+
+    /* Remove unnecessary top spacing */
+    .block-container {
+        padding-top: 1.5rem;
+    }
+
+    /* Consistent card appearance */
+    .ui-card {
+        padding: 18px;
+        border-radius: 12px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        margin-bottom: 15px;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 768px) {
+
+        .block-container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+        }
+    }
+
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# ============================================================
+# FINAL UI POLISHING - CELL 5 END
+# ============================================================
