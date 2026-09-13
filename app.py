@@ -438,11 +438,6 @@ if selected_module == "Dashboard":
 
     st.header("📊 Management Dashboard")
 
-    st.info(
-        "Dashboard module will be developed here."
-    )
-
-
 elif selected_module == "Raw Materials":
 
     st.header("🧱 Raw Material Management")
