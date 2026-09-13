@@ -6,6 +6,7 @@
 import streamlit as st
 import sqlite3
 import hashlib
+from pathlib import Path
 
 
 # ============================================================
