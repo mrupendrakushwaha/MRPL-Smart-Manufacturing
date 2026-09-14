@@ -816,7 +816,8 @@ elif selected_module == "🔐 Users" and user_role == "Admin":
 # EMPLOYEE SELF-SERVICE MODULES
 # ------------------------------------------------------------
 
-elif selected_module == "🕘 My Attendance":
+elif "My Attendance" in selected_module:
+    
     st.header("🕘 My Attendance")
 
     # -----------------------------------------
