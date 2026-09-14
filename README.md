@@ -381,15 +381,23 @@ Database file:
 mrpl.db
 
 ---
+<br>
 
-## 👨‍💻 Developer
+# 👨‍💻 DEVELOPER
 
-### Upendra Kushwaha
+# **━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+# **     UPENDRA KUSHWAHA**
+# **━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
-**MRPL Smart Manufacturing System**
+### 🏭 MRPL Smart Manufacturing System
 
-> A manufacturing management application developed using Python, Streamlit and SQLite.
+**Designed & Developed by Upendra Kushwaha**
 
----
+<br>
 
-⭐ If you find this project useful, consider giving the repository a star.
+> **MRPL Smart Manufacturing System**  
+> Manufacturing • Quality • Inventory • Employees • Orders • Dispatch
+
+<br>
+
+### © 2026 • UPENDRA KUSHWAHA
