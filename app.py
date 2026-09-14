@@ -819,15 +819,20 @@ elif selected_module == "🔐 Users" and user_role == "Admin":
 elif selected_module == "🕘 My Attendance":
     st.header("🕘 My Attendance")
 
-    # Success message after attendance action
+    # -----------------------------------------
+    # SUCCESS MESSAGE
+    # -----------------------------------------
     if "attendance_message" in st.session_state:
         st.success(st.session_state.attendance_message)
         del st.session_state.attendance_message
 
-    # Load employee details
+    # -----------------------------------------
+    # CHECK EMPLOYEE PROFILE
+    # -----------------------------------------
     if not employee_id:
         st.error("No employee profile is linked to this account.")
     else:
+
         emp_data = load_data(
             "employees",
             where="id = ?",
@@ -837,17 +842,24 @@ elif selected_module == "🕘 My Attendance":
         if emp_data.empty:
             st.error("Employee profile not found.")
         else:
+
             emp_name = emp_data.iloc[0]["full_name"]
 
-            # Load all attendance records
+            # -----------------------------------------
+            # ATTENDANCE HISTORY
+            # -----------------------------------------
+            st.subheader("📋 Attendance History")
+
             my_att = load_data(
                 "attendance",
                 where="employee_id = ?",
                 params=(employee_id,)
             )
 
-            # Show latest attendance first
             if not my_att.empty:
+
+                # Date ko string mein convert karke
+                # latest attendance sabse upar rakho
                 my_att["att_date"] = my_att["att_date"].astype(str)
 
                 my_att = my_att.sort_values(
@@ -855,7 +867,7 @@ elif selected_module == "🕘 My Attendance":
                     ascending=False
                 )
 
-                # Show only useful columns
+                # Sirf required columns
                 columns = [
                     "employee_name",
                     "att_date",
@@ -869,32 +881,55 @@ elif selected_module == "🕘 My Attendance":
                     if col in my_att.columns
                 ]
 
+                # Column names user-friendly
+                display_att = my_att[existing_columns].copy()
+
+                rename_columns = {
+                    "employee_name": "Employee Name",
+                    "att_date": "Attendance Date",
+                    "status": "Status",
+                    "check_in": "Check-in",
+                    "check_out": "Check-out"
+                }
+
+                display_att = display_att.rename(
+                    columns=rename_columns
+                )
+
                 st.dataframe(
-                    my_att[existing_columns],
+                    display_att,
                     use_container_width=True,
                     hide_index=True
                 )
+
             else:
                 st.info("No attendance records found.")
 
+            # -----------------------------------------
+            # TODAY'S ATTENDANCE
+            # -----------------------------------------
             st.divider()
 
-            st.subheader("Mark today's attendance")
+            st.subheader("📅 Today's Attendance")
 
             today_str = str(date.today())
 
-            # Check today's attendance
             today_att = load_data(
                 "attendance",
                 where="employee_id = ? AND att_date = ?",
                 params=(employee_id, today_str)
             )
 
+            # -----------------------------------------
+            # NO ATTENDANCE MARKED TODAY
+            # -----------------------------------------
             if today_att.empty:
 
-                # Mark Present / Check-in
+                st.write(f"**Employee:** {emp_name}")
+                st.write(f"**Date:** {today_str}")
+
                 if st.button(
-                    "Mark Present (Check-in now)",
+                    "✅ Mark Present",
                     key="mark_present"
                 ):
 
@@ -908,8 +943,14 @@ elif selected_module == "🕘 My Attendance":
                     run_query(
                         """
                         INSERT INTO attendance
-                        (employee_id, employee_name, att_date,
-                         status, check_in, check_out)
+                        (
+                            employee_id,
+                            employee_name,
+                            att_date,
+                            status,
+                            check_in,
+                            check_out
+                        )
                         VALUES (?, ?, ?, ?, ?, ?)
                         """,
                         (
@@ -923,31 +964,64 @@ elif selected_module == "🕘 My Attendance":
                     )
 
                     st.session_state.attendance_message = (
-                        "Your attendance marked successfully."
+                        "Your attendance marked"
                     )
 
                     st.rerun()
 
+            # -----------------------------------------
+            # ATTENDANCE ALREADY MARKED
+            # -----------------------------------------
             else:
-                today_record = today_att.iloc[0]
 
-                check_in = today_record.get("check_in")
-                check_out = today_record.get("check_out")
+                today_row = today_att.iloc[0]
 
-                # Already checked in
-                st.success(
-                    f"Attendance already marked for {emp_name}."
+                st.success("Your attendance marked")
+
+                st.write(f"**Employee:** {emp_name}")
+                st.write(f"**Date:** {today_str}")
+                st.write(
+                    f"**Status:** {today_row['status']}"
                 )
 
-                if check_in:
-                    st.write(f"**Check-in:** {check_in}")
+                # -----------------------------------------
+                # CHECK-IN TIME
+                # -----------------------------------------
+                if (
+                    "check_in" in today_row.index
+                    and today_row["check_in"]
+                ):
+                    st.write(
+                        f"**Check-in:** {today_row['check_in']}"
+                    )
 
-                # Check-out button
-                if not check_out:
+                # -----------------------------------------
+                # CHECK-OUT
+                # -----------------------------------------
+                check_out_value = (
+                    today_row["check_out"]
+                    if "check_out" in today_row.index
+                    else None
+                )
+
+                if check_out_value:
+                    st.write(
+                        f"**Check-out:** {check_out_value}"
+                    )
+
+                    st.info(
+                        "Today's attendance is complete."
+                    )
+
+                else:
+
+                    st.warning(
+                        "Check-out is still pending."
+                    )
 
                     if st.button(
-                        "Check-out now",
-                        key="checkout_today"
+                        "🚪 Check Out",
+                        key="check_out_today"
                     ):
 
                         from datetime import datetime
@@ -972,15 +1046,10 @@ elif selected_module == "🕘 My Attendance":
                         )
 
                         st.session_state.attendance_message = (
-                            "Your check-out recorded successfully."
+                            "Check-out recorded successfully."
                         )
 
                         st.rerun()
-
-                else:
-                    st.success(
-                        f"Check-out: {check_out}"
-                    )
 elif selected_module == "📅 My Leave":
     st.header("📅 My Leave")
     my_leave = load_data("leave_requests", where="employee_id = ?", params=(employee_id,))
