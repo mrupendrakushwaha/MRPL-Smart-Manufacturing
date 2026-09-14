@@ -708,30 +708,57 @@ if "user" not in st.session_state:
 
 if not st.session_state.logged_in:
 
-    tab_login, tab_products = st.tabs(["🔐 Staff Login", "🌐 Our Products"])
+    st.markdown("## 🏭 MRPL Smart Manufacturing System")
 
-    with tab_login:
-        st.title("🏭 MRPL Smart Manufacturing System")
+    # Top buttons
+    col1, col2 = st.columns(2)
+
+    with col1:
+        login_btn = st.button(
+            "🔐 Staff Login",
+            use_container_width=True
+        )
+
+    with col2:
+        st.link_button(
+            "🛍️ Our Products",
+            "https://mahakoshalrefractories.com/products",
+            use_container_width=True
+        )
+
+    # Login form
+    if login_btn or st.session_state.get("show_login", False):
+
+        st.session_state.show_login = True
+
         st.subheader("🔐 Login")
 
         with st.form("login_form"):
             username = st.text_input("Username")
             password = st.text_input("Password", type="password")
-            login_button = st.form_submit_button("🔑 Login", type="primary", width="stretch")
 
-            if login_button:
-                user = authenticate_user(username.strip(), password)
+            login_submit = st.form_submit_button(
+                "🔑 Login",
+                use_container_width=True
+            )
+
+            if login_submit:
+                user = authenticate_user(
+                    username.strip(),
+                    password
+                )
+
                 if user:
                     st.session_state.logged_in = True
                     st.session_state.user = user
+                    st.session_state.show_login = False
                     st.rerun()
                 else:
                     st.error("Invalid username or password.")
 
-        st.caption("Login credentials are managed securely by the Admin.")
-
-    with tab_products:
-        render_products_page()
+        st.caption(
+            "Login credentials are managed securely by the Admin."
+        )
 
     st.stop()
 
