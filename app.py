@@ -700,8 +700,6 @@ if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 if "user" not in st.session_state:
     st.session_state.user = None
-
-
 # ============================================================
 # LOGIN / PUBLIC LANDING PAGE
 # ============================================================
@@ -720,13 +718,35 @@ if not st.session_state.logged_in:
         )
 
     with col2:
-        st.link_button(
+        products_btn = st.button(
             "🛍️ Our Products",
+            use_container_width=True
+        )
+
+    # --------------------------------------------------------
+    # OUR PRODUCTS
+    # --------------------------------------------------------
+    if products_btn:
+
+        render_products_page()
+
+        # Mahakoshal Refractories website link - at bottom
+        st.markdown("---")
+        st.markdown(
+            "🌐 **Visit Mahakoshal Refractories**"
+        )
+
+        st.link_button(
+            "Open Mahakoshal Refractories Products",
             "https://mahakoshalrefractories.com/products",
             use_container_width=True
         )
 
-    # Login form
+        st.stop()
+
+    # --------------------------------------------------------
+    # LOGIN
+    # --------------------------------------------------------
     if login_btn or st.session_state.get("show_login", False):
 
         st.session_state.show_login = True
@@ -734,8 +754,13 @@ if not st.session_state.logged_in:
         st.subheader("🔐 Login")
 
         with st.form("login_form"):
+
             username = st.text_input("Username")
-            password = st.text_input("Password", type="password")
+
+            password = st.text_input(
+                "Password",
+                type="password"
+            )
 
             login_submit = st.form_submit_button(
                 "🔑 Login",
@@ -743,18 +768,24 @@ if not st.session_state.logged_in:
             )
 
             if login_submit:
+
                 user = authenticate_user(
                     username.strip(),
                     password
                 )
 
                 if user:
+
                     st.session_state.logged_in = True
                     st.session_state.user = user
                     st.session_state.show_login = False
+
                     st.rerun()
+
                 else:
-                    st.error("Invalid username or password.")
+                    st.error(
+                        "Invalid username or password."
+                    )
 
         st.caption(
             "Login credentials are managed securely by the Admin."
