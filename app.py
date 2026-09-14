@@ -816,73 +816,171 @@ elif selected_module == "🔐 Users" and user_role == "Admin":
 # EMPLOYEE SELF-SERVICE MODULES
 # ------------------------------------------------------------
 
-elif selected_module == "🙍 My Profile":
-    st.header("🙍 My Profile")
-    if employee_id:
-        emp = load_data("employees", where="id = ?", params=(employee_id,))
-        if not emp.empty:
-            row = emp.iloc[0]
-            st.write(f"**Name:** {row['full_name']}")
-            st.write(f"**Designation:** {row['designation']}")
-            st.write(f"**Department:** {row['department']}")
-            st.write(f"**Phone:** {row['phone']}")
-            st.write(f"**Email:** {row['email']}")
-            st.write(f"**Joining Date:** {row['joining_date']}")
-            st.write(f"**Status:** {row['status']}")
-        else:
-            st.info("No employee profile linked to this account.")
-    else:
-        st.info("No employee profile linked to this account.")
+elif selected_module == "🕘 My Attendance":
+    st.header("🕘 My Attendance")
 
-elif selected_module == "🕐 My Attendance":
-    st.header("🕐 My Attendance")
-    my_att = load_data("attendance", where="employee_id = ?", params=(employee_id,))
-    st.dataframe(my_att, use_container_width=True, hide_index=True)
+    # Success message after attendance action
+    if "attendance_message" in st.session_state:
+        st.success(st.session_state.attendance_message)
+        del st.session_state.attendance_message
 
-    st.divider()
-    st.subheader("Mark today's attendance")
-    today_str = str(date.today())
-    already_marked = not my_att[my_att["att_date"] == today_str].empty if not my_att.empty else False
-    if already_marked:
-        st.info("You have already marked attendance for today.")
+    # Load employee details
+    if not employee_id:
+        st.error("No employee profile is linked to this account.")
     else:
-        emp_name_row = load_data(
+        emp_data = load_data(
             "employees",
             where="id = ?",
             params=(employee_id,)
         )
 
-        emp_name = emp_name_row.iloc[0]["full_name"] if not emp_name_row.empty else "Employee"
+        if emp_data.empty:
+            st.error("Employee profile not found.")
+        else:
+            emp_name = emp_data.iloc[0]["full_name"]
 
-        if st.button("Mark Present (Check-in now)"):
-            from datetime import datetime
-            from zoneinfo import ZoneInfo
+            # Load all attendance records
+            my_att = load_data(
+                "attendance",
+                where="employee_id = ?",
+                params=(employee_id,)
+            )
 
-            check_in_time = datetime.now(
-                ZoneInfo("Asia/Kolkata")
-            ).strftime("%Y-%m-%d %H:%M:%S")
+            # Show latest attendance first
+            if not my_att.empty:
+                my_att["att_date"] = my_att["att_date"].astype(str)
 
-            run_query(
-                """
-                INSERT INTO attendance
-                (employee_id, employee_name, att_date, status, check_in)
-                VALUES (?, ?, ?, ?, ?)
-                """,
-                (
-                    employee_id,
-                    emp_name,
-                    today_str,
-                    "Present",
-                    check_in_time
+                my_att = my_att.sort_values(
+                    by="att_date",
+                    ascending=False
                 )
+
+                # Show only useful columns
+                columns = [
+                    "employee_name",
+                    "att_date",
+                    "status",
+                    "check_in",
+                    "check_out"
+                ]
+
+                existing_columns = [
+                    col for col in columns
+                    if col in my_att.columns
+                ]
+
+                st.dataframe(
+                    my_att[existing_columns],
+                    use_container_width=True,
+                    hide_index=True
+                )
+            else:
+                st.info("No attendance records found.")
+
+            st.divider()
+
+            st.subheader("Mark today's attendance")
+
+            today_str = str(date.today())
+
+            # Check today's attendance
+            today_att = load_data(
+                "attendance",
+                where="employee_id = ? AND att_date = ?",
+                params=(employee_id, today_str)
             )
 
-            st.success(
-                f"Attendance marked successfully at {check_in_time}"
-            )
-            st.rerun()
-    
+            if today_att.empty:
 
+                # Mark Present / Check-in
+                if st.button(
+                    "Mark Present (Check-in now)",
+                    key="mark_present"
+                ):
+
+                    from datetime import datetime
+                    from zoneinfo import ZoneInfo
+
+                    check_in_time = datetime.now(
+                        ZoneInfo("Asia/Kolkata")
+                    ).strftime("%Y-%m-%d %H:%M:%S")
+
+                    run_query(
+                        """
+                        INSERT INTO attendance
+                        (employee_id, employee_name, att_date,
+                         status, check_in, check_out)
+                        VALUES (?, ?, ?, ?, ?, ?)
+                        """,
+                        (
+                            employee_id,
+                            emp_name,
+                            today_str,
+                            "Present",
+                            check_in_time,
+                            None
+                        )
+                    )
+
+                    st.session_state.attendance_message = (
+                        "Your attendance marked successfully."
+                    )
+
+                    st.rerun()
+
+            else:
+                today_record = today_att.iloc[0]
+
+                check_in = today_record.get("check_in")
+                check_out = today_record.get("check_out")
+
+                # Already checked in
+                st.success(
+                    f"Attendance already marked for {emp_name}."
+                )
+
+                if check_in:
+                    st.write(f"**Check-in:** {check_in}")
+
+                # Check-out button
+                if not check_out:
+
+                    if st.button(
+                        "Check-out now",
+                        key="checkout_today"
+                    ):
+
+                        from datetime import datetime
+                        from zoneinfo import ZoneInfo
+
+                        check_out_time = datetime.now(
+                            ZoneInfo("Asia/Kolkata")
+                        ).strftime("%Y-%m-%d %H:%M:%S")
+
+                        run_query(
+                            """
+                            UPDATE attendance
+                            SET check_out = ?
+                            WHERE employee_id = ?
+                            AND att_date = ?
+                            """,
+                            (
+                                check_out_time,
+                                employee_id,
+                                today_str
+                            )
+                        )
+
+                        st.session_state.attendance_message = (
+                            "Your check-out recorded successfully."
+                        )
+
+                        st.rerun()
+
+                else:
+                    st.success(
+                        f"Check-out: {check_out}"
+                    )
 elif selected_module == "📅 My Leave":
     st.header("📅 My Leave")
     my_leave = load_data("leave_requests", where="employee_id = ?", params=(employee_id,))
