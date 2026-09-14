@@ -843,12 +843,12 @@ elif selected_module == "🕐 My Attendance":
     st.subheader("Mark today's attendance")
     today_str = str(date.today())
     already_marked = not my_att[my_att["att_date"] == today_str].empty if not my_att.empty else False
-    if already_marked:
-        st.info("You have already marked attendance for today.")
+if already_marked:
+    st.info("You have already marked attendance for today.")
     else:
         emp_name_row = load_data("employees", where="id = ?", params=(employee_id,))
         emp_name = emp_name_row.iloc[0]["full_name"] if not emp_name_row.empty else username
-        if st.button("Mark Present (Check-in now)"):
+if st.button("Mark Present (Check-in now)"):
     from datetime import datetime
     from zoneinfo import ZoneInfo
 
