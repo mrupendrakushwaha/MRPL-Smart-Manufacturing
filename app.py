@@ -485,7 +485,7 @@ def ensure_bootstrap_admins():
     conn = get_connection()
 
     # Reset Admin IDs once: keep existing Admin accounts
-conn.execute("""
+    conn.execute("""
     UPDATE users
     SET id = CASE
         WHEN username = 'Upendra' THEN 1
@@ -495,8 +495,8 @@ conn.execute("""
     WHERE username IN ('Upendra', 'Sandeephaldkar')
 """)
 
-conn.execute("DELETE FROM sqlite_sequence WHERE name = 'users'")
-conn.execute("""
+    conn.execute("DELETE FROM sqlite_sequence WHERE name = 'users'")
+    conn.execute("""
     INSERT INTO sqlite_sequence(name, seq)
     SELECT 'users', MAX(id) FROM users
     WHERE NOT EXISTS (
