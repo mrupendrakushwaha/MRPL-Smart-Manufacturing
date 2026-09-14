@@ -484,10 +484,6 @@ def ensure_bootstrap_admins():
 
     conn = get_connection()
 
-    # Remove legacy/demo accounts only. The upgraded app starts with exactly
-    # the two configured Admin accounts; additional users can be added later
-    # from Admin Management.
-    conn.execute("DELETE FROM users WHERE username IN ('admin', 'manager', 'employee')")
     # Reset Admin IDs once: keep existing Admin accounts
 conn.execute("""
     UPDATE users
@@ -507,6 +503,7 @@ conn.execute("""
         SELECT 1 FROM sqlite_sequence WHERE name = 'users'
     )
 """)
+
     for admin_username, admin_password in admins:
         if not admin_username or not admin_password:
             continue
