@@ -849,12 +849,32 @@ elif selected_module == "🕐 My Attendance":
         emp_name_row = load_data("employees", where="id = ?", params=(employee_id,))
         emp_name = emp_name_row.iloc[0]["full_name"] if not emp_name_row.empty else username
         if st.button("Mark Present (Check-in now)"):
-            run_query(
-                "INSERT INTO attendance (employee_id, employee_name, att_date, status, check_in, check_out) VALUES (?,?,?,?,?,?)",
-                (employee_id, emp_name, today_str, "Present", datetime.now().strftime("%H:%M"), None)
-            )
-            st.success("Attendance marked.")
-            st.rerun()
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+
+    check_in_time = datetime.now(
+        ZoneInfo("Asia/Kolkata")
+    ).strftime("%Y-%m-%d %H:%M:%S")
+
+    run_query(
+        """
+        INSERT INTO attendance
+        (employee_id, employee_name, att_date, status, check_in)
+        VALUES (?, ?, ?, ?, ?)
+        """,
+        (
+            employee_id,
+            emp_name,
+            today_str,
+            "Present",
+            check_in_time
+        )
+    )
+
+    st.success(
+        f"Attendance marked successfully at {check_in_time}"
+    )
+    st.rerun()
 
 elif selected_module == "📅 My Leave":
     st.header("📅 My Leave")
