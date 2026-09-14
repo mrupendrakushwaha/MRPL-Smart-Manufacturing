@@ -381,23 +381,3 @@ Database file:
 mrpl.db
 
 ---
-<br>
-
-# 👨‍💻 DEVELOPER
-
-# **━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
-# **     UPENDRA KUSHWAHA**
-# **━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
-
-### 🏭 MRPL Smart Manufacturing System
-
-**Designed & Developed by Upendra Kushwaha**
-
-<br>
-
-> **MRPL Smart Manufacturing System**  
-> Manufacturing • Quality • Inventory • Employees • Orders • Dispatch
-
-<br>
-
-### © 2026 • UPENDRA KUSHWAHA
