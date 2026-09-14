@@ -488,7 +488,25 @@ def ensure_bootstrap_admins():
     # the two configured Admin accounts; additional users can be added later
     # from Admin Management.
     conn.execute("DELETE FROM users WHERE username IN ('admin', 'manager', 'employee')")
+    # Reset Admin IDs once: keep existing Admin accounts
+conn.execute("""
+    UPDATE users
+    SET id = CASE
+        WHEN username = 'Upendra' THEN 1
+        WHEN username = 'Sandeephaldkar' THEN 2
+        ELSE id
+    END
+    WHERE username IN ('Upendra', 'Sandeephaldkar')
+""")
 
+conn.execute("DELETE FROM sqlite_sequence WHERE name = 'users'")
+conn.execute("""
+    INSERT INTO sqlite_sequence(name, seq)
+    SELECT 'users', MAX(id) FROM users
+    WHERE NOT EXISTS (
+        SELECT 1 FROM sqlite_sequence WHERE name = 'users'
+    )
+""")
     for admin_username, admin_password in admins:
         if not admin_username or not admin_password:
             continue
