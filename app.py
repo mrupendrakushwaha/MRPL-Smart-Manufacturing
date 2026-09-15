@@ -691,7 +691,108 @@ def crud_module(table, columns, title, icon, form_fields, key_prefix):
                 st.success("Record deleted.")
                 st.rerun()
 
+# ============================================================
+# PRODUCT IMAGES FROM GITHUB REPOSITORY
+# Shows only images that actually exist in the product folders
+# ============================================================
 
+import requests
+import streamlit as st
+
+GITHUB_API = "https://api.github.com/repos/mrupendrakushwaha/MRPL-Smart-Manufacturing/contents"
+
+IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png", ".webp")
+
+
+def get_github_files(path=""):
+    """Get files/folders from the real GitHub repository."""
+    url = f"{GITHUB_API}/{path}" if path else GITHUB_API
+
+    response = requests.get(url, timeout=15)
+
+    if response.status_code != 200:
+        return []
+
+    return response.json()
+
+
+def get_product_images(base_path):
+    """Read only actual image files from product folders."""
+    images = []
+
+    folders = get_github_files(base_path)
+
+    for folder in folders:
+
+        if folder.get("type") != "dir":
+            continue
+
+        product_folder = folder["name"]
+        product_path = folder["path"]
+
+        files = get_github_files(product_path)
+
+        for file in files:
+
+            if file.get("type") != "file":
+                continue
+
+            filename = file.get("name", "")
+
+            if filename.lower().endswith(IMAGE_EXTENSIONS):
+
+                images.append({
+                    "product_name": product_folder,
+                    "image_name": filename,
+                    "image_url": file["download_url"]
+                })
+
+    return images
+
+
+# ============================================================
+# GET REAL IMAGES FROM YOUR REPOSITORY
+# ============================================================
+
+all_product_images = []
+
+# Unshaped Product
+all_product_images.extend(
+    get_product_images("Unshaped Product")
+)
+
+# Shaped Product
+all_product_images.extend(
+    get_product_images("Shaped-Product")
+)
+
+
+# ============================================================
+# DISPLAY PRODUCT IMAGE + EXACT PRODUCT FOLDER NAME
+# ============================================================
+
+if all_product_images:
+
+    st.subheader("📦 Our Products")
+
+    cols = st.columns(3)
+
+    for i, product in enumerate(all_product_images):
+
+        with cols[i % 3]:
+
+            st.image(
+                product["image_url"],
+                use_container_width=True
+            )
+
+            st.markdown(
+                f"**{product['product_name']}**"
+            )
+
+else:
+
+    st.warning("No product images found in GitHub repository.")
 # ============================================================
 # PUBLIC "OUR PRODUCTS" PAGE (no login required)
 # ============================================================
