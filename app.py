@@ -1155,6 +1155,7 @@ elif selected_module == "🔐 Admin Management" and user_role == "Admin":
                             VALUES (?, ?, ?, ?, 1)
                             """,
                             (new_username.strip(), hash_password(new_password), new_role, emp_id,now_india().strftime("%Y-%m-%d %H:%M:%S")
+                            ) 
                         )
                         st.success("User created successfully.")
                         st.rerun()
