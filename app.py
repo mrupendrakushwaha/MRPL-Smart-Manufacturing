@@ -557,7 +557,36 @@ def load_data(table, where="", params=()):
 def run_query(query, params=()):
     conn = get_connection()
     cur = conn.cursor()
+
     cur.execute(query, params)
+
+    # India time for created_at
+    if query.strip().upper().startswith("INSERT"):
+        try:
+            table_name = query.strip().split()[2]
+
+            cols = [
+                row[1]
+                for row in cur.execute(
+                    f"PRAGMA table_info({table_name})"
+                ).fetchall()
+            ]
+
+            if "created_at" in cols and cur.lastrowid:
+                cur.execute(
+                    f"""
+                    UPDATE {table_name}
+                    SET created_at = ?
+                    WHERE rowid = ?
+                    """,
+                    (
+                        now_india().strftime("%Y-%m-%d %H:%M:%S"),
+                        cur.lastrowid
+                    )
+                )
+        except Exception:
+            pass
+
     conn.commit()
     conn.close()
 
