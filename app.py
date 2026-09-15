@@ -620,7 +620,7 @@ def number_input_field(col, widget_key, default):
 
 def date_input_field(col, widget_key, default):
     try:
-        default_date = datetime.strptime(default, "%Y-%m-%d").date() if default else date.now_india()
+        default_date = datetime.strptime(default, "%Y-%m-%d").date() if default else now_india().date()
     except (ValueError, TypeError):
         default_date = now_india().date()
     return str(st.date_input(_label(col), value=default_date, key=widget_key))
