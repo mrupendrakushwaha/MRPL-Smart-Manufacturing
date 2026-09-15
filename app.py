@@ -720,8 +720,11 @@ if "user" not in st.session_state:
 # ============================================================
 
 if not st.session_state.logged_in:
-
-    st.markdown("## 🏭 MRPL Smart Manufacturing System")
+    st.markdown("---")
+    st.markdown(
+    "<h1 style='text-align: center;'>🏭 MRPL Smart Manufacturing System</h1>",
+    unsafe_allow_html=True
+    )
 
     # Top buttons
     col1, col2 = st.columns(2)
@@ -752,8 +755,8 @@ if not st.session_state.logged_in:
         )
 
         st.link_button(
-            "Open Mahakoshal Refractories Products",
-            "https://mahakoshalrefractories.com/products",
+            "🌐Visit Mahakoshal Refractories ",
+            "https://mahakoshalrefractories.com",
             use_container_width=True
         )
 
