@@ -620,7 +620,10 @@ def init_db():
                 ""
             ),
         ]
-
+        st.write("IMAGE TEST:", github_image(
+    "Unshaped Product/High & Medium Purity Dense Castables",
+    "Maxcast.jpg"
+))
         # ----------------------------------------------------
         # INSERT PRODUCTS
         # ----------------------------------------------------
