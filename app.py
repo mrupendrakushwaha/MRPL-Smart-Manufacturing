@@ -169,7 +169,7 @@ def hash_password(password):
 INDIA_TZ = ZoneInfo("Asia/Kolkata")
 
 def now_india():
-    return datetime.now(INDIA_TZ)
+    return datetime.now_india().strftime("%Y-%m-%d %H:%M:%S")
 
 
 # ============================================================
@@ -591,9 +591,9 @@ def number_input_field(col, widget_key, default):
 
 def date_input_field(col, widget_key, default):
     try:
-        default_date = datetime.strptime(default, "%Y-%m-%d").date() if default else date.today()
+        default_date = datetime.strptime(default, "%Y-%m-%d").date() if default else date.now_india()
     except (ValueError, TypeError):
-        default_date = date.today()
+        default_date = now_india().date()
     return str(st.date_input(_label(col), value=default_date, key=widget_key))
 
 def status_select_field(options):
