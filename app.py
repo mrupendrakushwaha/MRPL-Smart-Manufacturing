@@ -559,6 +559,7 @@ def run_query(query, params=()):
     cur = conn.cursor()
 
     cur.execute(query, params)
+    inserted_rowid = cur.lastrowid
 
     # India time for created_at
     if query.strip().upper().startswith("INSERT"):
@@ -581,7 +582,7 @@ def run_query(query, params=()):
                     """,
                     (
                         now_india().strftime("%Y-%m-%d %H:%M:%S"),
-                        cur.lastrowid
+                        inserted_rowid
                     )
                 )
         except Exception:
@@ -1104,7 +1105,7 @@ elif selected_module == "🔐 Admin Management" and user_role == "Admin":
                         run_query(
                             """
                             INSERT INTO users
-                            (username, password_hash, role, employee_id, is_active)
+                            (username, password_hash, role, employee_id,cteated_at, is_active)
                             VALUES (?, ?, 'Admin', NULL, 1)
                             """,
                             (admin_username.strip(), hash_password(admin_password))
@@ -1150,10 +1151,10 @@ elif selected_module == "🔐 Admin Management" and user_role == "Admin":
                         run_query(
                             """
                             INSERT INTO users
-                            (username, password_hash, role, employee_id, is_active)
+                            (username, password_hash, role, employee_id,created_at, is_active)
                             VALUES (?, ?, ?, ?, 1)
                             """,
-                            (new_username.strip(), hash_password(new_password), new_role, emp_id)
+                            (new_username.strip(), hash_password(new_password), new_role, emp_id,now_india().strftime("%Y-%m-%d %H:%M:%S")
                         )
                         st.success("User created successfully.")
                         st.rerun()
