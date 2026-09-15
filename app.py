@@ -963,14 +963,36 @@ elif selected_module == "🚚 Orders & Dispatch":
         crud_module("dispatch", columns, "Dispatch", "🚚", fields, "disp")
 
 elif selected_module == "👥 Employees":
-    columns = ["full_name", "designation", "department", "phone", "email", "joining_date", "status"]
+    columns = [
+        "id",
+        "full_name",
+        "designation",
+        "department",
+        "phone",
+        "email",
+        "joining_date",
+        "status"
+    ]
+
     fields = {
-        "full_name": text_input_field, "designation": text_input_field,
-        "department": text_input_field, "phone": text_input_field,
-        "email": text_input_field, "joining_date": date_input_field,
-        "status": status_select_field(["Active", "Inactive"]),
+        "id": number_input_field,
+        "full_name": text_input_field,
+        "designation": text_input_field,
+        "department": text_input_field,
+        "phone": text_input_field,
+        "email": text_input_field,
+        "joining_date": date_input_field,
+        "status": status_select_field(["Active", "Inactive"])
     }
-    crud_module("employees", columns, "Employee Management", "👥", fields, "emp")
+
+    crud_module(
+        "employees",
+        columns,
+        "Employee Management",
+        "👥",
+        fields,
+        "id"
+    )
 
 elif selected_module == "🕐 Attendance":
     columns = ["employee_id", "employee_name", "att_date", "status", "check_in", "check_out"]
