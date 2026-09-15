@@ -411,81 +411,236 @@ def init_db():
 
     # --------------------------------------------------------
     # MRPL PRODUCT CATALOG
-    # Based on the company's public Products pages.
-    # Refresh this once so old demo product names do not remain.
     # --------------------------------------------------------
-    # Raw GitHub base for product photos uploaded to the
-    # mrupendrakushwaha/MRPL-Smart-Manufacturing repo (main branch).
-    GH_RAW_BASE = "https://raw.githubusercontent.com/mrupendrakushwaha/MRPL-Smart-Manufacturing/main"
 
-    product_refresh_key = "mrpl_official_products_v3"
+    import requests
+
+    GITHUB_API_BASE = (
+        "https://api.github.com/repos/"
+        "mrupendrakushwaha/MRPL-Smart-Manufacturing/contents"
+    )
+
+    product_refresh_key = "mrpl_official_products_v4"
+
     product_refreshed = cur.execute(
         "SELECT value FROM system_meta WHERE key = ?",
         (product_refresh_key,)
     ).fetchone()
 
     if not product_refreshed:
+
         cur.execute("DELETE FROM products")
+
+        # ----------------------------------------------------
+        # GitHub image helper
+        # ----------------------------------------------------
+        def github_image(folder, filename):
+            try:
+                api_url = (
+                    f"{GITHUB_API_BASE}/"
+                    f"{folder}/{filename}"
+                )
+
+                response = requests.get(
+                    api_url,
+                    timeout=10
+                )
+
+                if response.status_code == 200:
+                    data = response.json()
+
+                    # GitHub gives the correct raw download URL
+                    return data.get("download_url", "")
+
+            except Exception:
+                pass
+
+            return ""
+
+        # ----------------------------------------------------
+        # PRODUCT CATALOG
+        # ----------------------------------------------------
         catalog = [
-            ("Shaped Products", "Fireclay & High Alumina Bricks", "Refractory bricks with high thermal strength; high alumina grades are available up to 92% Al2O3.",
-             f"{GH_RAW_BASE}/Shaped-Product/Fireclay%20and%20High%20Alumina%20Bricks.jpg"),
-            ("Shaped Products", "Pre-Cast Pre-Fired (PCPF) Blocks", "Custom-engineered pre-fired refractory blocks for ready-to-install applications.",
-             f"{GH_RAW_BASE}/Shaped-Product/Pre-Cast%20Pre-Fired%20%28PCPF%29%20Blocks.jpg"),
-            ("Shaped Products", "Silicon Carbide Bricks & Shapes", "Silicon carbide refractory shapes for demanding high-temperature and abrasion-resistant applications.",
-             ""),
-            ("Shaped Products", "Acid-Resistant Bricks", "Acid-resistant refractory bricks for corrosive environments and chimney applications.",
-             ""),
-            ("Unshaped Products", "High & Medium Purity Dense Castables", "Dense castables designed for high-temperature industrial applications with high strength and thermal-shock resistance.",
-             ",".join([
-                 f"{GH_RAW_BASE}/Unshaped%20Product/High%20%26%20Medium%20Purity%20Dense%20Castables/Maxcast.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/High%20%26%20Medium%20Purity%20Dense%20Castables/Maxcrete.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/High%20%26%20Medium%20Purity%20Dense%20Castables/Maxheat.jpg",
-             ])),
-            ("Unshaped Products", "Low & Ultra Low Cement Castables", "Low-cement monolithic refractories designed for high strength, durability and thermal performance.",
-             ",".join([
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Low%20%26%20Ultra%20Low%20Cement%20Castables/Maxmon65.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Low%20%26%20Ultra%20Low%20Cement%20Castables/Maxmon70.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Low%20%26%20Ultra%20Low%20Cement%20Castables/Maxmon80.jpg",
-             ])),
-            ("Unshaped Products", "Insulating Castables", "Lightweight insulating castables for thermal insulation and reduced heat loss.",
-             ",".join([
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Insulating%20Castables/Maxlyte11.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Insulating%20Castables/Maxlyte13.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Insulating%20Castables/Maxlyte7.jpg",
-             ])),
-            ("Unshaped Products", "Plastic Masses", "Plastic refractory masses for installation in complex geometries and high-temperature zones.",
-             ",".join([
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Plastics%20Masses/Maxphos80.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Plastics%20Masses/Maxphos90.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Plastics%20Masses/Maxplast.jpg",
-             ])),
-            ("Unshaped Products", "High Alumina Cement & Binder", "High alumina refractory cements and binders used in refractory castable systems.",
-             ",".join([
-                 f"{GH_RAW_BASE}/Unshaped%20Product/High%20Alumina%20Cement%20%26%20Binder/Calcem50.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/High%20Alumina%20Cement%20%26%20Binder/Calcem70.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/High%20Alumina%20Cement%20%26%20Binder/Calcem75.jpg",
-             ])),
-            ("Unshaped Products", "Grouting Materials", "Refractory grouting compounds for installation and maintenance applications.",
-             ",".join([
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Grouting%20Compound/Maxgrout20.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Grouting%20Compound/Maxgrout30.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Grouting%20Compound/Maxgrout8.jpg",
-             ])),
-            ("Unshaped Products", "Fireclay & High Alumina Mortars", "Heat-setting and air-setting refractory mortars for reliable jointing and installation.",
-             ",".join([
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Fire%20Clay%20%26%20High%20Alumina%20Mortars%20%28Heat%20%26%20Air%20Setting%29/Maxset50finemonolithic.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Fire%20Clay%20%26%20High%20Alumina%20Mortars%20%28Heat%20%26%20Air%20Setting%29/Maxset50monolithic.jpg",
-                 f"{GH_RAW_BASE}/Unshaped%20Product/Fire%20Clay%20%26%20High%20Alumina%20Mortars%20%28Heat%20%26%20Air%20Setting%29/Mortar75.jpg",
-             ])),
-            ("Unshaped Products", "Gunning Mixes", "Spray-applied refractory mixes for repair, maintenance and lining applications.",
-             ""),
-            ("Other Refractory Products", "Stainless Steel Anchors", "Stainless steel refractory anchors used to provide mechanical support to refractory linings.",
-             ""),
+
+            # ============================
+            # SHAPED PRODUCTS
+            # ============================
+
+            (
+                "Shaped Products",
+                "Fireclay & High Alumina Bricks",
+                "Refractory bricks with high thermal strength; high alumina grades are available up to 92% Al2O3.",
+                github_image(
+                    "Shaped-Product",
+                    "Fireclay and High Alumina Bricks.jpg"
+                )
+            ),
+
+            (
+                "Shaped Products",
+                "Pre-Cast Pre-Fired (PCPF) Blocks",
+                "Custom-engineered pre-fired refractory blocks for ready-to-install applications.",
+                github_image(
+                    "Shaped-Product",
+                    "Pre-Cast Pre-Fired (PCPF) Blocks.jpg"
+                )
+            ),
+
+            (
+                "Shaped Products",
+                "Silicon Carbide Bricks & Shapes",
+                "Silicon carbide refractory shapes for demanding high-temperature and abrasion-resistant applications.",
+                ""
+            ),
+
+            (
+                "Shaped Products",
+                "Acid-Resistant Bricks",
+                "Acid-resistant refractory bricks for corrosive environments and chimney applications.",
+                ""
+            ),
+
+            # ============================
+            # HIGH & MEDIUM PURITY DENSE CASTABLES
+            # ============================
+
+            (
+                "Unshaped Products",
+                "High & Medium Purity Dense Castables",
+                "Dense castables designed for high-temperature industrial applications with high strength and thermal-shock resistance.",
+                github_image(
+                    "Unshaped Product/High & Medium Purity Dense Castables",
+                    "Maxcast.jpg"
+                )
+            ),
+
+            # ============================
+            # LOW & ULTRA LOW CEMENT CASTABLES
+            # ============================
+
+            (
+                "Unshaped Products",
+                "Low & Ultra Low Cement Castables",
+                "Low-cement monolithic refractories designed for high strength, durability and thermal performance.",
+                github_image(
+                    "Unshaped Product/Low & Ultra Low Cement Castables",
+                    "Maxmon65.jpg"
+                )
+            ),
+
+            # ============================
+            # INSULATING CASTABLES
+            # ============================
+
+            (
+                "Unshaped Products",
+                "Insulating Castables",
+                "Lightweight insulating castables for thermal insulation and reduced heat loss.",
+                github_image(
+                    "Unshaped Product/Insulating Castables",
+                    "Maxlyte11.jpg"
+                )
+            ),
+
+            # ============================
+            # PLASTIC MASSES
+            # ============================
+
+            (
+                "Unshaped Products",
+                "Plastic Masses",
+                "Plastic refractory masses for installation in complex geometries and high-temperature zones.",
+                github_image(
+                    "Unshaped Product/Plastics Masses",
+                    "Maxphos80.jpg"
+                )
+            ),
+
+            # ============================
+            # HIGH ALUMINA CEMENT & BINDER
+            # ============================
+
+            (
+                "Unshaped Products",
+                "High Alumina Cement & Binder",
+                "High alumina refractory cements and binders used in refractory castable systems.",
+                github_image(
+                    "Unshaped Product/High Alumina Cement & Binder",
+                    "Calcem50.jpg"
+                )
+            ),
+
+            # ============================
+            # GROUTING MATERIALS
+            # ============================
+
+            (
+                "Unshaped Products",
+                "Grouting Materials",
+                "Refractory grouting compounds for installation and maintenance applications.",
+                github_image(
+                    "Unshaped Product/Grouting Compound",
+                    "Maxgrout20.jpg"
+                )
+            ),
+
+            # ============================
+            # FIRECLAY & HIGH ALUMINA MORTARS
+            # ============================
+
+            (
+                "Unshaped Products",
+                "Fireclay & High Alumina Mortars",
+                "Heat-setting and air-setting refractory mortars for reliable jointing and installation.",
+                github_image(
+                    "Unshaped Product/Fire Clay & High Alumina Mortars (Heat & Air Setting)",
+                    "Maxset50finemonolithic.jpg"
+                )
+            ),
+
+            # ============================
+            # GUNNING MIXES
+            # ============================
+
+            (
+                "Unshaped Products",
+                "Gunning Mixes",
+                "Spray-applied refractory mixes for repair, maintenance and lining applications.",
+                ""
+            ),
+
+            # ============================
+            # OTHER REFRACTORY PRODUCTS
+            # ============================
+
+            (
+                "Other Refractory Products",
+                "Stainless Steel Anchors",
+                "Stainless steel refractory anchors used to provide mechanical support to refractory linings.",
+                ""
+            ),
         ]
+
+        # ----------------------------------------------------
+        # INSERT PRODUCTS
+        # ----------------------------------------------------
+
         cur.executemany(
-            "INSERT INTO products (category, product_name, description, image_url, is_active) VALUES (?,?,?,?,?)",
-            [(cat, name, desc, img, 1) for cat, name, desc, img in catalog]
+            """
+            INSERT INTO products
+            (category, product_name, description, image_url, is_active)
+            VALUES (?, ?, ?, ?, ?)
+            """,
+            [
+                (cat, name, desc, img, 1)
+                for cat, name, desc, img in catalog
+            ]
         )
+
+        # ----------------------------------------------------
+        # SAVE REFRESH KEY
+        # ----------------------------------------------------
+
         cur.execute(
             "INSERT INTO system_meta (key, value) VALUES (?, ?)",
             (product_refresh_key, "done")
