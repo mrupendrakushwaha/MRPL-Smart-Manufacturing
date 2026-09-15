@@ -10,6 +10,9 @@ import re
 import pandas as pd
 from datetime import date, datetime
 from zoneinfo import ZoneInfo
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
 
 # ============================================================
 # APP CONFIGURATION
@@ -853,7 +856,7 @@ for category, items in product_images.items():
         with cols[i % 3]:
 
             with st.container(border=True):
-
+                full_image_path = BASE_DIR / image_path
                 st.image(
                     image_path,
                     width="stretch"
