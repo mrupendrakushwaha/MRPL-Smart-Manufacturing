@@ -418,7 +418,7 @@ def init_db():
     # mrupendrakushwaha/MRPL-Smart-Manufacturing repo (main branch).
     GH_RAW_BASE = "https://raw.githubusercontent.com/mrupendrakushwaha/MRPL-Smart-Manufacturing/main"
 
-    product_refresh_key = "mrpl_official_products_v2"
+    product_refresh_key = "mrpl_official_products_v3"
     product_refreshed = cur.execute(
         "SELECT value FROM system_meta WHERE key = ?",
         (product_refresh_key,)
