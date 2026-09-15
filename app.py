@@ -712,20 +712,158 @@ def render_products_page():
     if selected_category != "All Products":
         products_df = products_df[products_df["category"] == selected_category]
 
-    for cat in products_df["category"].unique():
-        st.markdown(f"### {cat}")
-        cat_products = products_df[products_df["category"] == cat]
+# ============================================================
+# PRODUCT IMAGES FROM GITHUB FOLDERS
+# ============================================================
 
-        cols = st.columns(3)
-        for i, (_, row) in enumerate(cat_products.iterrows()):
-            with cols[i % 3]:
-                with st.container(border=True):
-                    if row["image_url"]:
-                        st.image(row["image_url"], width="stretch")
-                    st.markdown(f"**{row['product_name']}**")
-                    st.caption(row["description"] or "")
-        st.write("")
+product_images = {
 
+    # ---------------- SHAPED PRODUCT ----------------
+    "Shaped Product": [
+        (
+            "Shaped-Product/Fireclay and High Alumina Bricks.jpg",
+            "Fireclay and High Alumina Bricks"
+        ),
+        (
+            "Shaped-Product/Pre-Cast Pre-Fired (PCPF) Blocks.jpg",
+            "Pre-Cast Pre-Fired (PCPF) Blocks"
+        ),
+    ],
+
+    # ---------------- UNSHAPED PRODUCT ----------------
+    "Fire Clay & High Alumina Mortars (Heat & Air Setting)": [
+        (
+            "Unshaped Product/Fire Clay & High Alumina Mortars (Heat & Air Setting)/Maxset50finemonolithic.jpg",
+            "Maxset 50 Fine Monolithic"
+        ),
+        (
+            "Unshaped Product/Fire Clay & High Alumina Mortars (Heat & Air Setting)/Maxset50monolithic.jpg",
+            "Maxset 50 Monolithic"
+        ),
+        (
+            "Unshaped Product/Fire Clay & High Alumina Mortars (Heat & Air Setting)/Mortar75.jpg",
+            "Mortar 75"
+        ),
+    ],
+
+    "Grouting Compound": [
+        (
+            "Unshaped Product/Grouting Compound/Maxgrout20.jpg",
+            "Maxgrout 20"
+        ),
+        (
+            "Unshaped Product/Grouting Compound/Maxgrout30.jpg",
+            "Maxgrout 30"
+        ),
+        (
+            "Unshaped Product/Grouting Compound/Maxgrout8.jpg",
+            "Maxgrout 8"
+        ),
+    ],
+
+    "High & Medium Purity Dense Castables": [
+        (
+            "Unshaped Product/High & Medium Purity Dense Castables/Maxcast.jpg",
+            "Maxcast"
+        ),
+        (
+            "Unshaped Product/High & Medium Purity Dense Castables/Maxcrete.jpg",
+            "Maxcrete"
+        ),
+        (
+            "Unshaped Product/High & Medium Purity Dense Castables/Maxheat.jpg",
+            "Maxheat"
+        ),
+    ],
+
+    "High Alumina Cement & Binder": [
+        (
+            "Unshaped Product/High Alumina Cement & Binder/Calcem50.jpg",
+            "Calcem 50"
+        ),
+        (
+            "Unshaped Product/High Alumina Cement & Binder/Calcem70.jpg",
+            "Calcem 70"
+        ),
+        (
+            "Unshaped Product/High Alumina Cement & Binder/Calcem75.jpg",
+            "Calcem 75"
+        ),
+    ],
+
+    "Insulating Castables": [
+        (
+            "Unshaped Product/Insulating Castables/Maxlyte11.jpg",
+            "Maxlyte 11"
+        ),
+        (
+            "Unshaped Product/Insulating Castables/Maxlyte13.jpg",
+            "Maxlyte 13"
+        ),
+        (
+            "Unshaped Product/Insulating Castables/Maxlyte7.jpg",
+            "Maxlyte 7"
+        ),
+    ],
+
+    "Low & Ultra Low Cement Castables": [
+        (
+            "Unshaped Product/Low & Ultra Low Cement Castables/Maxmon65.jpg",
+            "Maxmon 65"
+        ),
+        (
+            "Unshaped Product/Low & Ultra Low Cement Castables/Maxmon70.jpg",
+            "Maxmon 70"
+        ),
+        (
+            "Unshaped Product/Low & Ultra Low Cement Castables/Maxmon80.jpg",
+            "Maxmon 80"
+        ),
+    ],
+
+    "Plastics Masses": [
+        (
+            "Unshaped Product/Plastics Masses/Maxphos80.jpg",
+            "Maxphos 80"
+        ),
+        (
+            "Unshaped Product/Plastics Masses/Maxphos90.jpg",
+            "Maxphos 90"
+        ),
+        (
+            "Unshaped Product/Plastics Masses/Maxplast.jpg",
+            "Maxplast"
+        ),
+    ],
+}
+
+
+# ============================================================
+# DISPLAY ALL PRODUCTS
+# ============================================================
+
+for category, items in product_images.items():
+
+    st.markdown(f"### 🔹 {category}")
+
+    cols = st.columns(3)
+
+    for i, (image_path, product_name) in enumerate(items):
+
+        with cols[i % 3]:
+
+            with st.container(border=True):
+
+                st.image(
+                    image_path,
+                    width="stretch"
+                )
+
+                st.markdown(
+                    f"**{product_name}**"
+                )
+
+    st.write("")
     st.markdown("---")
     st.markdown("### 🌐 Mahakoshal Refractories — Official Product Website")
     st.link_button(
