@@ -1151,7 +1151,7 @@ elif selected_module == "🔐 Admin Management" and user_role == "Admin":
                             """
                             INSERT INTO users
                             (username, password_hash, role, employee_id,created_at, is_active)
-                            VALUES (?, ?, ?, ?, 1)
+                            VALUES (?, ?, ?, ?,?, 1)
                             """,
                             (new_username.strip(), hash_password(new_password), new_role, emp_id,now_india().strftime("%Y-%m-%d %H:%M:%S")
                             ) 
