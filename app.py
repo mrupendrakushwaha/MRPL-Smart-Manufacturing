@@ -714,26 +714,12 @@ def render_products_page():
 
     if selected_category != "All Products":
         products_df = products_df[products_df["category"] == selected_category]
-
 # ============================================================
 # PRODUCT IMAGES FROM GITHUB FOLDERS
 # ============================================================
 
 product_images = {
 
-    # ---------------- SHAPED PRODUCT ----------------
-    "Shaped Product": [
-        (
-            "Shaped-Product/Fireclay and High Alumina Bricks.jpg",
-            "Fireclay and High Alumina Bricks"
-        ),
-        (
-            "Shaped-Product/Pre-Cast Pre-Fired (PCPF) Blocks.jpg",
-            "Pre-Cast Pre-Fired (PCPF) Blocks"
-        ),
-    ],
-
-    # ---------------- UNSHAPED PRODUCT ----------------
     "Fire Clay & High Alumina Mortars (Heat & Air Setting)": [
         (
             "Unshaped Product/Fire Clay & High Alumina Mortars (Heat & Air Setting)/Maxset50finemonolithic.jpg",
@@ -781,8 +767,75 @@ product_images = {
 
     "High Alumina Cement & Binder": [
         (
-            "Unshaped Product/High Alumina Cement
- 
+            "Unshaped Product/High Alumina Cement & Binder/Calcem50.jpg",
+            "Calcem 50"
+        ),
+        (
+            "Unshaped Product/High Alumina Cement & Binder/Calcem70.jpg",
+            "Calcem 70"
+        ),
+        (
+            "Unshaped Product/High Alumina Cement & Binder/Calcem75.jpg",
+            "Calcem 75"
+        ),
+    ],
+
+    "Insulating Castables": [
+        (
+            "Unshaped Product/Insulating Castables/Maxlyte11.jpg",
+            "Maxlyte 11"
+        ),
+        (
+            "Unshaped Product/Insulating Castables/Maxlyte13.jpg",
+            "Maxlyte 13"
+        ),
+        (
+            "Unshaped Product/Insulating Castables/Maxlyte7.jpg",
+            "Maxlyte 7"
+        ),
+    ],
+
+    "Low & Ultra Low Cement Castables": [
+        (
+            "Unshaped Product/Low & Ultra Low Cement Castables/Maxmon65.jpg",
+            "Maxmon 65"
+        ),
+        (
+            "Unshaped Product/Low & Ultra Low Cement Castables/Maxmon70.jpg",
+            "Maxmon 70"
+        ),
+        (
+            "Unshaped Product/Low & Ultra Low Cement Castables/Maxmon80.jpg",
+            "Maxmon 80"
+        ),
+    ],
+
+    "Plastics Masses": [
+        (
+            "Unshaped Product/Plastics Masses/Maxphos80.jpg",
+            "Maxphos 80"
+        ),
+        (
+            "Unshaped Product/Plastics Masses/Maxphos90.jpg",
+            "Maxphos 90"
+        ),
+        (
+            "Unshaped Product/Plastics Masses/Maxplast.jpg",
+            "Maxplast"
+        ),
+    ],
+
+    "Shaped Product": [
+        (
+            "Shaped-Product/Fireclay and High Alumina Bricks.jpg",
+            "Fireclay and High Alumina Bricks"
+        ),
+        (
+            "Shaped-Product/Pre-Cast Pre-Fired (PCPF) Blocks.jpg",
+            "Pre-Cast Pre-Fired (PCPF) Blocks"
+        ),
+    ],
+}
 # ================================
 # DISPLAY ALL PRODUCTS
 # ================================
