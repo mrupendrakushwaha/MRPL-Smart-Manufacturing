@@ -382,7 +382,7 @@ def init_db():
         )
     """)
 
-    cleanup_key = "clean_demo_data_v2"
+    cleanup_key = "clean_demo_data_v3"
     cleaned = cur.execute(
         "SELECT value FROM system_meta WHERE key = ?",
         (cleanup_key,)
