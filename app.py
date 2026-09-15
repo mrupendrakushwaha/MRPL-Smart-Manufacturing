@@ -169,8 +169,7 @@ def hash_password(password):
 INDIA_TZ = ZoneInfo("Asia/Kolkata")
 
 def now_india():
-    return datetime.now_india().strftime("%Y-%m-%d %H:%M:%S")
-
+    return datetime.now(INDIA_TZ)
 
 # ============================================================
 # DATABASE INITIALIZATION
