@@ -457,10 +457,9 @@ def init_db():
         "Custom-engineered pre-fired refractory blocks for ready-to-install applications.",
                product_image("Pre-Cast Pre-Fired (PCPF) Blocks.jpg")
              ),
-
-        ]
+            
             # High & Medium Purity Dense Castables
-            (
+           (
                 "Unshaped Products",
                 "High & Medium Purity Dense Castables",
                 "Dense castables designed for high-temperature industrial applications with high strength and thermal-shock resistance.",
