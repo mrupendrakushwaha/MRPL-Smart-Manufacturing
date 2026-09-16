@@ -722,7 +722,7 @@ def init_db():
         return str(path) if path.exists() else ""
 
     def product_images(folder, filenames):
-    """Return GitHub Raw URLs for product images."""
+        """Return GitHub Raw URLs for product images."""
         paths = []
 
         for filename in filenames:
