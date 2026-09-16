@@ -434,7 +434,26 @@ st.markdown(
         .store-hero-title {{ font-size: 29px; }}
         .store-hero-text {{ font-size: 14px; }}
         .store-brand {{ font-size: 22px; }}
-    }}
+    }
+    /* Sidebar toggle button */
+[data-testid="stSidebarCollapsedControl"] button {
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 14px !important;
+    background: linear-gradient(135deg, #ff3333, #ff8c00) !important;
+    color: white !important;
+    border: 2px solid rgba(255,255,255,0.4) !important;
+}
+
+/* Open sidebar button */
+[data-testid="stSidebarCollapseButton"] button {
+    width: 45px !important;
+    height: 45px !important;
+    border-radius: 12px !important;
+    background: linear-gradient(135deg, #ff3333, #ff8c00) !important;
+    color: white !important;
+}
+    }
     </style>
     """,
     unsafe_allow_html=True
