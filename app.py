@@ -435,6 +435,33 @@ st.markdown(
         .store-hero-text {{ font-size: 14px; }}
         .store-brand {{ font-size: 22px; }}
     }}
+    
+/* INPUT BOX COLORS */
+    .stTextInput input,
+    .stNumberInput input,
+    .stDateInput input {
+        background-color: #102a43 !important;
+        color: #ffffff !important;
+        border: 2px solid #ff3b3b !important;
+    }
+
+/* Number input ka white right-side area */
+    .stNumberInput button {
+        background-color: #ff3b3b !important;
+        color: white !important;
+    }
+
+/* Date input ka calendar area */
+    .stDateInput button {
+        background-color: #ff3b3b !important;
+        color: white !important;
+    }
+
+/* Placeholder text */
+    .stTextInput input::placeholder,
+    .stNumberInput input::placeholder {
+       color: #cbd5e1 !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
