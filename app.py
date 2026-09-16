@@ -445,31 +445,20 @@ def init_db():
         cur.execute("DELETE FROM products")
 
         catalog = [
-            (
-                "Shaped Products",
-                "Fireclay & High Alumina Bricks",
-                "Refractory bricks with high thermal strength; high alumina grades are available up to 92% Al2O3.",
+           (
+        "Shaped Products",
+        "Fireclay & High Alumina Bricks",
+        "Refractory bricks with high thermal strength; high alumina grades are available up to 92% Al2O3.",
                 product_image("Fireclay and High Alumina Bricks.jpg")
             ),
             (
-                "Shaped Products",
-                "Pre-Cast Pre-Fired (PCPF) Blocks",
-                "Custom-engineered pre-fired refractory blocks for ready-to-install applications.",
-                product_image("Pre-Cast Pre-Fired (PCPF) Blocks.jpg")
-            ),
-            (
-                "Shaped Products",
-                "Silicon Carbide Bricks & Shapes",
-                "Silicon carbide refractory shapes for demanding high-temperature and abrasion-resistant applications.",
-                ""
-            ),
-            (
-                "Shaped Products",
-                "Acid-Resistant Bricks",
-                "Acid-resistant refractory bricks for corrosive environments and chimney applications.",
-                ""
+        "Shaped Products",
+        "Pre-Cast Pre-Fired (PCPF) Blocks",
+        "Custom-engineered pre-fired refractory blocks for ready-to-install applications.",
+               product_image("Pre-Cast Pre-Fired (PCPF) Blocks.jpg")
             ),
 
+        ]
             # High & Medium Purity Dense Castables
             (
                 "Unshaped Products",
