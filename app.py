@@ -1137,29 +1137,6 @@ def render_products_page():
         st.info("No products available right now.")
         return
 
-    # Search and category filter
-    search_col, category_col = st.columns([2.2, 1])
-
-    with search_col:
-        search_product = st.text_input(
-            "🔎 Search Products",
-            placeholder="Search by product name or category...",
-            key="public_product_search"
-        )
-
-    categories = [
-        "All Products"
-    ] + sorted(
-        products_df["category"].dropna().unique().tolist()
-    )
-
-    with category_col:
-        selected_category = st.selectbox(
-            "📂 Category",
-            categories,
-            key="public_product_category"
-        )
-
     # Apply filters
     filtered_df = products_df.copy()
 
