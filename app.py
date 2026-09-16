@@ -135,7 +135,7 @@ st.markdown(
     /* ---------------- Sidebar ---------------- */
     section[data-testid="stSidebar"] {{
         background: rgba(6, 22, 39, 0.98);
-        border-right: 1px solid var(--mrpl-border-soft);
+        border-right: 2px solid var(--mrpl-border-soft);
     }}
 
     section[data-testid="stSidebar"] > div {{
@@ -228,9 +228,9 @@ st.markdown(
     div[data-baseweb="select"],
     div[data-baseweb="base-input"],
     textarea, input {{
-        background: #0c2237 !important;
-        color: var(--mrpl-text) !important;
-        border-color: var(--mrpl-border) !important;
+        background: #3b0b0b !important;
+        color: #ffffff !important;
+        border-color: #ff3333 !important;
         border-radius: 9px !important;
     }}
 
