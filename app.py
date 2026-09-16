@@ -48,16 +48,16 @@ st.markdown(
     f"""
     <style>
     :root {{
-        --mrpl-bg: #05131f;
-        --mrpl-panel: #0c2038;
-        --mrpl-panel-2: #112a45;
-        --mrpl-border: #1e3f5c;
-        --mrpl-border-soft: rgba(255,255,255,.08);
-        --mrpl-text: #eef4fb;
-        --mrpl-muted: #97acc2;
-        --mrpl-accent: #2f9bf0;
-        --mrpl-accent-2: #17c9a3;
-        --mrpl-gold: #d8ab5c;
+        --mrpl-bg: #f5f7fa;
+        --mrpl-panel: #ffffff;
+        --mrpl-panel-2: #f8fafc;
+        --mrpl-border: #dfe5ec;
+        --mrpl-border-soft: rgba(15,23,42,.10);
+        --mrpl-text: #172033;
+        --mrpl-muted: #64748b;
+        --mrpl-accent: #0066cc;
+        --mrpl-accent-2: #00a884;
+        --mrpl-gold: #d89b20;
         --mrpl-radius: 14px;
         --mrpl-shadow: 0 10px 28px rgba(0,0,0,.28);
         --mrpl-font: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
