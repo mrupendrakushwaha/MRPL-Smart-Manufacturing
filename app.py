@@ -830,12 +830,6 @@ def init_db():
                 )
             ),
 
-            (
-                "Unshaped Products",
-                "Gunning Mixes",
-                "Spray-applied refractory mixes for repair, maintenance and lining applications.",
-                ""
-            ),
         ]
 
         cur.executemany(
