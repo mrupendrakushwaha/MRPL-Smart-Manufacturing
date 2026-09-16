@@ -1431,7 +1431,7 @@ selected_module = st.sidebar.radio("Select Module", allowed_modules) if allowed_
 
 if not allowed_modules:
     st.sidebar.warning("No modules assigned to this role.")
-st.header(____) 
+
 st.title(" 🏭 MRPL Smart Manufacturing System")
 
 # ------------------------------------------------------------
