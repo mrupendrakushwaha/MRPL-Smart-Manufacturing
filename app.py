@@ -424,37 +424,6 @@ st.markdown(
         border-color: var(--mrpl-accent);
         background: rgba(47, 155, 240, .10);
     }}
-        /* ---------------- Sidebar Collapse Button ---------------- */
-
-    [data-testid="stSidebarCollapsedControl"] button {{
-        width: 46px !important;
-        height: 46px !important;
-        border-radius: 12px !important;
-        background: linear-gradient(135deg, #e31e24, #ff7a00) !important;
-        border: 1px solid rgba(255,255,255,.35) !important;
-        box-shadow: 0 6px 18px rgba(0,0,0,.35) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }}
-
-    [data-testid="stSidebarCollapsedControl"] button:hover {{
-        background: linear-gradient(135deg, #ff3b30, #ff9d00) !important;
-        transform: scale(1.05);
-    }}
-
-    [data-testid="stSidebarCollapsedControl"] button svg {{
-        display: none !important;
-    }}
-
-    [data-testid="stSidebarCollapsedControl"] button::after {{
-        content: "☰";
-        font-size: 25px;
-        font-weight: 900;
-        color: white;
-        line-height: 1;
-    }}
-
     @media (max-width: 768px) {{
         .block-container {{ padding: 1rem .8rem 1.5rem .8rem; }}
         h1 {{ font-size: 1.8rem !important; line-height: 1.15; }}
@@ -464,6 +433,36 @@ st.markdown(
         .store-hero-title {{ font-size: 29px; }}
         .store-hero-text {{ font-size: 14px; }}
         .store-brand {{ font-size: 22px; }}
+    }}
+/* ===== SIDEBAR COLLAPSE BUTTON ===== */
+
+    div[data-testid="stSidebarCollapseButton"] button {{
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+        min-height: 48px !important;
+
+        background: linear-gradient(135deg, #e31e24, #ff7a00) !important;
+        border: 2px solid #ffffff !important;
+        border-radius: 12px !important;
+
+        box-shadow: 0 6px 18px rgba(0,0,0,0.35) !important;
+    }}
+
+    div[data-testid="stSidebarCollapseButton"] button svg {{
+        display: none !important;
+    }}
+
+    div[data-testid="stSidebarCollapseButton"] button::after {{
+        content: "☰" !important;
+        font-size: 25px !important;
+        font-weight: 900 !important;
+        color: white !important;
+    }}
+
+    div[data-testid="stSidebarCollapseButton"] button:hover {{
+        background: linear-gradient(135deg, #ff3b30, #ff9500) !important;
+        transform: scale(1.05);
     }}
     </style>
     """,
