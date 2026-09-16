@@ -435,13 +435,19 @@ st.markdown(
         .store-hero-text {{ font-size: 14px; }}
         .store-brand {{ font-size: 22px; }}
     }}
+    </style>
+    """,
+    unsafe_allow_html=True
+    st.markdown("""
+    <style>
+
     [data-testid="stSidebarCollapsedControl"] button {
         background: linear-gradient(135deg, #e31e24, #ff7a00) !important;
         color: white !important;
-        border-radius: 12px !important;
         width: 50px !important;
         height: 50px !important;
-        border: 2px solid rgba(255,255,255,0.35) !important;
+        border-radius: 12px !important;
+        border: 2px solid white !important;
         box-shadow: 0 5px 15px rgba(0,0,0,0.35) !important;
     }
 
@@ -450,16 +456,16 @@ st.markdown(
     }
 
     [data-testid="stSidebarCollapsedControl"] button::after {
-        content: "☰" !important;
-        font-size: 25px !important;
-        font-weight: 900 !important;
-        color: white !important;
+        content: "☰";
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
     }
-    
+
     </style>
-    """,
-    unsafe_allow_html=True
-)
+    """, unsafe_allow_html=True)
+    )
+
 
 DB_PATH = "mrpl.db"
 
