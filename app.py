@@ -43,25 +43,46 @@ MRPL_BG_CSS = (
     if MRPL_BG_DATA
     else 'none'
 )
-
 st.markdown(
     f"""
     <style>
+
+    /* =========================================================
+       MRPL — PROFESSIONAL CORPORATE UI
+       Replace your existing CSS block with this only.
+       No Python functionality is changed.
+       ========================================================= */
+
     :root {{
-        --mrpl-bg: #120808;
-        --mrpl-panel: #1c1010;
-        --mrpl-panel-2: #251414;
-        --mrpl-border: #5c2525;
-        --mrpl-border-soft: rgba(255, 80, 80, 0.15);
-        --mrpl-text: #ffffff;
-        --mrpl-muted: #c5b5b5;
-        --mrpl-accent: #e53935;
-        --mrpl-accent-2: #ff5252;
-        --mrpl-gold: #d8a23a;
-        --mrpl-radius: 14px;
-        --mrpl-shadow: 0 10px 28px rgba(0,0,0,.28);
-        --mrpl-font: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+        --mrpl-bg: #07111f;
+        --mrpl-bg-2: #0b1726;
+        --mrpl-panel: rgba(15, 31, 49, 0.92);
+        --mrpl-panel-2: #102238;
+        --mrpl-border: rgba(108, 160, 202, 0.22);
+        --mrpl-border-hover: rgba(69, 170, 255, 0.55);
+
+        --mrpl-text: #f5f9fd;
+        --mrpl-muted: #9db1c5;
+
+        --mrpl-accent: #1597e5;
+        --mrpl-accent-2: #35b9ff;
+        --mrpl-green: #19c89a;
+        --mrpl-gold: #e7b75b;
+
+        --mrpl-radius: 16px;
+        --mrpl-shadow: 0 12px 35px rgba(0,0,0,.28);
+
+        --mrpl-font:
+            "Inter",
+            "Segoe UI",
+            -apple-system,
+            BlinkMacSystemFont,
+            sans-serif;
     }}
+
+    /* =========================================================
+       GLOBAL
+       ========================================================= */
 
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
@@ -69,377 +90,796 @@ st.markdown(
         font-family: var(--mrpl-font) !important;
     }}
 
-    /* Full-app MRPL background */
     .stApp {{
-        background-image:
+        background:
             linear-gradient(
-                180deg,
-                rgba(10, 10, 10, 0.72) 0%,
-                rgba(20, 10, 10, 0.78) 50%,
-                rgba(10, 10, 10, 0.84) 100%
-             ),
+                135deg,
+                rgba(4,12,22,.96) 0%,
+                rgba(7,19,33,.94) 45%,
+                rgba(5,13,24,.97) 100%
+            ),
             {MRPL_BG_CSS};
+
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
         background-repeat: no-repeat;
-        background-color: var(--mrpl-bg);
+
         color: var(--mrpl-text);
-        font-family: var(--mrpl-font);
     }}
 
-    #MainMenu, footer {{ visibility: hidden; }}
+    #MainMenu,
+    footer {{
+        visibility: hidden;
+    }}
 
     header[data-testid="stHeader"] {{
-        background: rgba(5, 19, 31, 0.55);
-        backdrop-filter: blur(6px);
+        background: rgba(4,12,22,.72) !important;
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255,255,255,.05);
     }}
 
     .block-container {{
         max-width: 1500px;
-        padding-top: 1.6rem;
-        padding-bottom: 2.5rem;
+        padding-top: 2rem;
+        padding-bottom: 3rem;
     }}
 
-    h1, h2, h3, h4, p, span, label, .stMarkdown,
-    [data-testid="stCaptionContainer"] {{
+    /* =========================================================
+       TYPOGRAPHY
+       ========================================================= */
+
+    h1, h2, h3, h4 {{
         color: var(--mrpl-text) !important;
+        font-family: var(--mrpl-font) !important;
+    }}
+
+    p, span, label, .stMarkdown {{
         font-family: var(--mrpl-font);
     }}
 
     h1 {{
-        font-weight: 900;
-        letter-spacing: -.3px;
-        padding-bottom: 14px;
-        margin-bottom: 18px;
-        border-bottom: 1px solid var(--mrpl-border-soft);
-        background: linear-gradient(90deg, #ffffff 0%, #bcd7ee 100%);
+        font-size: 2.35rem !important;
+        font-weight: 900 !important;
+        letter-spacing: -1px;
+        margin-bottom: 22px !important;
+
+        background: linear-gradient(
+            90deg,
+            #ffffff 0%,
+            #bde5ff 55%,
+            #72caff 100%
+        );
+
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-    }}
-    h2, h3 {{ font-weight: 750; letter-spacing: -.2px; }}
 
-    /* Section headers get a subtle accent rule */
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(75,170,230,.18);
+    }}
+
     h2 {{
+        font-size: 1.65rem !important;
+        font-weight: 800 !important;
+        letter-spacing: -.4px;
+
         border-left: 4px solid var(--mrpl-accent);
-        padding-left: 12px;
+        padding-left: 13px;
+        margin-top: 25px;
     }}
 
-    small, .stCaption, [data-testid="stCaptionContainer"] p {{
+    h3 {{
+        font-size: 1.25rem !important;
+        font-weight: 750 !important;
+    }}
+
+    small,
+    .stCaption,
+    [data-testid="stCaptionContainer"] {{
         color: var(--mrpl-muted) !important;
     }}
 
-    hr {{ border-color: var(--mrpl-border-soft) !important; margin: 1.4rem 0; }}
+    hr {{
+        border: none !important;
+        border-top: 1px solid rgba(120,170,210,.14) !important;
+        margin: 1.8rem 0 !important;
+    }}
 
-    /* ---------------- Sidebar ---------------- */
+    /* =========================================================
+       SIDEBAR
+       ========================================================= */
+
     section[data-testid="stSidebar"] {{
-        background: rgba(6, 22, 39, 0.98);
-        border-right: 2px solid var(--mrpl-border-soft);
+        background:
+            linear-gradient(
+                180deg,
+                #081a2c 0%,
+                #061322 55%,
+                #040d18 100%
+            ) !important;
+
+        border-right: 1px solid rgba(69,160,220,.20);
+        box-shadow: 8px 0 30px rgba(0,0,0,.22);
     }}
 
     section[data-testid="stSidebar"] > div {{
-        background: linear-gradient(180deg, #08192c 0%, #050f1c 100%);
+        background: transparent !important;
     }}
 
     section[data-testid="stSidebar"] .stMarkdown h1,
     section[data-testid="stSidebar"] .stMarkdown h2,
     section[data-testid="stSidebar"] .stMarkdown h3 {{
-        -webkit-text-fill-color: var(--mrpl-text) !important;
         border: none !important;
         padding: 0 !important;
-    }}
-
-    section[data-testid="stSidebar"] .stAlert {{
-        border-radius: 10px;
-        border: 1px solid var(--mrpl-border-soft);
+        background: none !important;
+        -webkit-text-fill-color: var(--mrpl-text) !important;
     }}
 
     section[data-testid="stSidebar"] .stRadio > label {{
-        color: #a9bed3 !important;
-        font-weight: 600;
-        font-size: 12px;
+        color: #8fa8bf !important;
+        font-size: 11px !important;
+        font-weight: 800 !important;
+        letter-spacing: 1px;
         text-transform: uppercase;
-        letter-spacing: .6px;
-        margin-bottom: 6px;
+        margin-bottom: 10px;
     }}
 
     section[data-testid="stSidebar"] [role="radiogroup"] > label {{
-        background: rgba(255,255,255,.03);
-        border: 1px solid var(--mrpl-border-soft);
-        border-radius: 10px;
-        padding: 9px 12px;
-        margin-bottom: 6px;
-        transition: all .15s ease;
+        background: rgba(255,255,255,.025);
+        border: 1px solid rgba(100,160,205,.12);
+        border-radius: 11px;
+        padding: 11px 13px;
+        margin-bottom: 7px;
+
+        transition:
+            transform .18s ease,
+            background .18s ease,
+            border-color .18s ease;
     }}
 
     section[data-testid="stSidebar"] [role="radiogroup"] > label:hover {{
-        border-color: var(--mrpl-accent);
-        background: rgba(47, 155, 240, .10);
-        transform: translateX(2px);
+        background: rgba(21,151,229,.09);
+        border-color: rgba(55,177,245,.42);
+        transform: translateX(3px);
     }}
 
-    /* ---------------- Cards / containers ---------------- */
-    
-    div[data-testid="stMetric"] {{
-        background: linear-gradient(155deg, #0f2c4a, #0a1f36);
-        border: 1px solid var(--mrpl-border);
-        border-left: 3px solid var(--mrpl-accent);
+    section[data-testid="stSidebar"] [role="radiogroup"] > label p {{
+        color: #d9e8f5 !important;
+        font-weight: 600 !important;
+    }}
+
+    section[data-testid="stSidebar"] .stAlert {{
+        background: rgba(255,255,255,.035);
+        border: 1px solid rgba(100,160,205,.16);
         border-radius: 12px;
-        padding: 16px 18px;
-        box-shadow: 0 6px 18px rgba(0,0,0,.20);
-        transition: transform .15s ease, box-shadow .15s ease;
+    }}
+
+    /* =========================================================
+       METRIC CARDS
+       ========================================================= */
+
+    div[data-testid="stMetric"] {{
+        position: relative;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(18,45,70,.96),
+                rgba(9,27,45,.96)
+            ) !important;
+
+        border: 1px solid rgba(86,158,204,.20);
+        border-radius: var(--mrpl-radius);
+
+        padding: 19px 20px;
+
+        box-shadow: 0 9px 25px rgba(0,0,0,.22);
+
+        overflow: hidden;
+
+        transition:
+            transform .18s ease,
+            border-color .18s ease,
+            box-shadow .18s ease;
+    }}
+
+    div[data-testid="stMetric"]::before {{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+
+        background:
+            linear-gradient(
+                90deg,
+                var(--mrpl-accent),
+                var(--mrpl-accent-2),
+                var(--mrpl-green)
+            );
     }}
 
     div[data-testid="stMetric"]:hover {{
-        transform: translateY(-2px);
-        box-shadow: 0 10px 24px rgba(0,0,0,.28);
+        transform: translateY(-4px);
+        border-color: rgba(50,174,244,.42);
+        box-shadow: 0 15px 32px rgba(0,0,0,.32);
     }}
 
     div[data-testid="stMetricLabel"] {{
-        color: var(--mrpl-muted) !important;
-        font-size: 12.5px !important;
-        text-transform: uppercase;
-        letter-spacing: .5px;
-        font-weight: 700 !important;
-    }}
-    div[data-testid="stMetricValue"] {{
-        color: #f5faff !important;
+        color: #91a9be !important;
+        font-size: 11.5px !important;
         font-weight: 800 !important;
+        text-transform: uppercase;
+        letter-spacing: .7px;
     }}
 
-    /* ---------------- Tabs ---------------- */
+    div[data-testid="stMetricValue"] {{
+        color: #ffffff !important;
+        font-size: 30px !important;
+        font-weight: 850 !important;
+        letter-spacing: -.6px;
+    }}
+
+    /* =========================================================
+       TABS
+       ========================================================= */
+
     button[data-baseweb="tab"] {{
-        color: var(--mrpl-muted) !important;
-        font-weight: 650;
-    }}
-    button[data-baseweb="tab"][aria-selected="true"] {{
-        color: var(--mrpl-text) !important;
-    }}
-    div[data-baseweb="tab-highlight"] {{
-        background-color: var(--mrpl-accent) !important;
-    }}
-    div[data-baseweb="tab-border"] {{
-        background-color: var(--mrpl-border-soft) !important;
+        color: #8fa7bb !important;
+        font-weight: 700 !important;
+        font-size: 13px !important;
+        padding: 11px 18px !important;
+        transition: all .18s ease;
     }}
 
-    /* ---------------- Inputs ---------------- */
+    button[data-baseweb="tab"]:hover {{
+        color: #ffffff !important;
+    }}
+
+    button[data-baseweb="tab"][aria-selected="true"] {{
+        color: #ffffff !important;
+    }}
+
+    div[data-baseweb="tab-highlight"] {{
+        background:
+            linear-gradient(
+                90deg,
+                var(--mrpl-accent),
+                var(--mrpl-accent-2)
+            ) !important;
+
+        height: 3px !important;
+        border-radius: 5px;
+    }}
+
+    div[data-baseweb="tab-border"] {{
+        background: rgba(100,160,205,.12) !important;
+    }}
+
+    /* =========================================================
+       INPUTS
+       ========================================================= */
+
     div[data-baseweb="input"],
     div[data-baseweb="select"],
     div[data-baseweb="base-input"],
-    textarea, input {{
-        background: #0c2237 !important;
-        color: var(--mrpl-text) !important;
-        border-color: var(--mrpl-border) !important;
-        border-radius: 9px !important;
-    }}
+    textarea,
+    input {{
+        background: rgba(8,27,45,.95) !important;
+        color: #ffffff !important;
 
-    div[data-baseweb="select"] * {{ color: var(--mrpl-text) !important; }}
+        border: 1px solid rgba(92,151,193,.22) !important;
+        border-radius: 10px !important;
+
+        transition:
+            border-color .18s ease,
+            box-shadow .18s ease;
+    }}
 
     div[data-baseweb="input"]:focus-within,
     div[data-baseweb="select"]:focus-within {{
         border-color: var(--mrpl-accent) !important;
-        box-shadow: 0 0 0 1px var(--mrpl-accent) !important;
+        box-shadow:
+            0 0 0 1px rgba(21,151,229,.35),
+            0 0 18px rgba(21,151,229,.10) !important;
     }}
 
-    label p {{ font-weight: 600 !important; font-size: 13.5px !important; }}
+    div[data-baseweb="select"] * {{
+        color: #ffffff !important;
+    }}
 
-    /* ---------------- Buttons ---------------- */
+    label p {{
+        color: #cbd9e5 !important;
+        font-weight: 650 !important;
+        font-size: 13px !important;
+    }}
+
+    /* =========================================================
+       BUTTONS
+       ========================================================= */
+
     .stButton > button,
     .stLinkButton > a,
     .stDownloadButton > button,
     .stFormSubmitButton > button {{
-        border-radius: 9px;
-        min-height: 42px;
-        font-weight: 700;
-        letter-spacing: .1px;
-        border: 1px solid #2a638f;
-        background: linear-gradient(135deg, #1076b8, #0a4e7d);
+
+        min-height: 44px;
+
+        border-radius: 10px !important;
+
+        border: 1px solid rgba(67,166,220,.35) !important;
+
+        background:
+            linear-gradient(
+                135deg,
+                #138bd0,
+                #07578c
+            ) !important;
+
         color: #ffffff !important;
-        box-shadow: 0 5px 14px rgba(0,0,0,.22);
-        transition: all .15s ease;
+
+        font-weight: 750 !important;
+        letter-spacing: .15px;
+
+        box-shadow:
+            0 7px 18px rgba(0,0,0,.22);
+
+        transition:
+            transform .18s ease,
+            box-shadow .18s ease,
+            border-color .18s ease;
     }}
 
     .stButton > button:hover,
     .stLinkButton > a:hover,
     .stDownloadButton > button:hover,
     .stFormSubmitButton > button:hover {{
-        border-color: #4fc0ff;
-        background: linear-gradient(135deg, #1489d1, #0d5c93);
-        transform: translateY(-1px);
-        box-shadow: 0 8px 20px rgba(0,0,0,.30);
+        transform: translateY(-2px);
+
+        border-color: #48bfff !important;
+
+        box-shadow:
+            0 11px 25px rgba(0,0,0,.32),
+            0 0 18px rgba(21,151,229,.12);
+
+        background:
+            linear-gradient(
+                135deg,
+                #18a0eb,
+                #086ca8
+            ) !important;
     }}
 
     .stButton > button[kind="primary"] {{
-        background: linear-gradient(135deg, var(--mrpl-accent-2), #0f9d80);
-        border-color: #1bb494;
+        background:
+            linear-gradient(
+                135deg,
+                #18c79a,
+                #0b8d73
+            ) !important;
+
+        border-color: rgba(54,222,180,.55) !important;
     }}
+
     .stButton > button[kind="primary"]:hover {{
-        background: linear-gradient(135deg, #1fe0b8, #12b494);
+        background:
+            linear-gradient(
+                135deg,
+                #25dfb0,
+                #0da082
+            ) !important;
     }}
 
-    /* ---------------- Dataframes / tables ---------------- */
+    /* =========================================================
+       DATAFRAME
+       ========================================================= */
+
     div[data-testid="stDataFrame"] {{
-        border: 1px solid var(--mrpl-border);
-        border-radius: 12px;
+        border: 1px solid rgba(91,155,198,.22);
+        border-radius: 14px;
         overflow: hidden;
-        box-shadow: 0 6px 16px rgba(0,0,0,.18);
+
+        box-shadow:
+            0 10px 28px rgba(0,0,0,.22);
     }}
 
-    /* ---------------- Alerts ---------------- */
+    /* =========================================================
+       ALERTS
+       ========================================================= */
+
     div[data-testid="stAlert"] {{
-        border-radius: 10px;
-        border: 1px solid var(--mrpl-border-soft);
+        border-radius: 12px !important;
+        border: 1px solid rgba(94,160,204,.20) !important;
+        background: rgba(12,31,50,.88) !important;
     }}
 
-    /* ---------------- E-commerce public page ---------------- */
+    /* =========================================================
+       E-COMMERCE / PUBLIC MRPL PAGE
+       ========================================================= */
+
     .store-header {{
-        background: rgba(255,255,255,.98);
-        border: 1px solid #dce5ed;
-        border-radius: 16px;
-        padding: 16px 24px;
-        margin-bottom: 20px;
-        box-shadow: 0 8px 22px rgba(0,0,0,.18);
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255,255,255,.98),
+                rgba(241,247,252,.98)
+            );
+
+        border: 1px solid #d8e3ec;
+        border-radius: 18px;
+
+        padding: 17px 25px;
+        margin-bottom: 22px;
+
+        box-shadow:
+            0 10px 28px rgba(0,0,0,.20);
+
         display: flex;
         align-items: center;
         justify-content: space-between;
     }}
 
     .store-brand {{
-        color: #0f2942;
-        font-size: 27px;
+        color: #09243c !important;
+        font-size: 28px;
         font-weight: 900;
         line-height: 1.1;
-        letter-spacing: -.3px;
+        letter-spacing: -.7px;
     }}
 
     .store-tagline {{
-        color: #64748b;
-        font-size: 13px;
-        margin-top: 4px;
-        font-weight: 500;
+        color: #64788b !important;
+        font-size: 12.5px;
+        margin-top: 5px;
+        font-weight: 600;
     }}
+
+    /* =========================================================
+       HERO
+       ========================================================= */
 
     .store-hero {{
         position: relative;
-        min-height: 300px;
+
+        min-height: 330px;
+
         display: flex;
         align-items: center;
-        padding: 46px;
-        border-radius: 22px;
+
+        padding: 55px;
+
+        border-radius: 24px;
         overflow: hidden;
-        margin-bottom: 28px;
+
+        margin-bottom: 32px;
+
         background-image:
             linear-gradient(
                 100deg,
-                rgba(3,14,26,.93),
-                rgba(3,14,26,.50)
+                rgba(3,15,28,.96) 0%,
+                rgba(3,15,28,.80) 43%,
+                rgba(3,15,28,.34) 100%
             ),
             {MRPL_BG_CSS};
+
         background-size: cover;
         background-position: center;
-        box-shadow: 0 14px 34px rgba(0,0,0,.28);
-        border: 1px solid rgba(255,255,255,.08);
+
+        border: 1px solid rgba(255,255,255,.10);
+
+        box-shadow:
+            0 18px 45px rgba(0,0,0,.35);
     }}
 
-    .store-hero-content {{ max-width: 720px; }}
+    .store-hero::after {{
+        content: "";
+
+        position: absolute;
+
+        left: 0;
+        bottom: 0;
+
+        width: 100%;
+        height: 3px;
+
+        background:
+            linear-gradient(
+                90deg,
+                #168fd7,
+                #35b9ff,
+                #19c89a,
+                transparent
+            );
+    }}
+
+    .store-hero-content {{
+        max-width: 760px;
+        position: relative;
+        z-index: 2;
+    }}
 
     .store-badge {{
         display: inline-block;
-        padding: 7px 14px;
+
+        padding: 8px 15px;
+
         border-radius: 999px;
-        background: rgba(255,255,255,.14);
-        border: 1px solid rgba(255,255,255,.28);
-        color: #ffffff;
-        font-size: 12px;
-        font-weight: 750;
-        letter-spacing: .3px;
-        margin-bottom: 14px;
+
+        background: rgba(22,151,229,.14);
+
+        border: 1px solid rgba(88,195,255,.35);
+
+        color: #bfe9ff;
+
+        font-size: 11px;
+        font-weight: 800;
+
+        letter-spacing: .8px;
+
+        text-transform: uppercase;
+
+        margin-bottom: 17px;
     }}
 
     .store-hero-title {{
-        color: #ffffff;
-        font-size: 42px;
-        line-height: 1.12;
+        color: #ffffff !important;
+
+        font-size: 46px;
+
+        line-height: 1.08;
+
         font-weight: 900;
-        letter-spacing: -.5px;
-        margin-bottom: 12px;
+
+        letter-spacing: -1.2px;
+
+        margin-bottom: 15px;
     }}
 
     .store-hero-text {{
-        color: #e4edf5;
-        font-size: 15.5px;
-        line-height: 1.7;
-        font-weight: 400;
+        color: #d5e4ef !important;
+
+        font-size: 15px;
+
+        line-height: 1.75;
+
+        font-weight: 450;
+
+        max-width: 690px;
     }}
 
+    /* =========================================================
+       STORE SECTIONS
+       ========================================================= */
+
     .store-section-title {{
-        color: #ffffff;
-        font-size: 28px;
+        color: #ffffff !important;
+
+        font-size: 29px;
+
         font-weight: 850;
-        letter-spacing: -.3px;
-        margin: 14px 0 4px 0;
+
+        letter-spacing: -.5px;
+
+        margin: 17px 0 5px 0;
     }}
 
     .store-section-subtitle {{
-        color: #a9bfd4;
+        color: #91aabd !important;
+
         font-size: 13.5px;
-        margin-bottom: 18px;
+
+        line-height: 1.6;
+
+        margin-bottom: 20px;
     }}
 
+    /* =========================================================
+       PRODUCT CARDS
+       ========================================================= */
+
     .product-name {{
-        color: #ffffff;
+        color: #ffffff !important;
+
         font-size: 18px;
+
         font-weight: 800;
-        margin-top: 8px;
+
+        margin-top: 9px;
         margin-bottom: 5px;
     }}
 
     .product-category {{
-        color: #5fc0ff;
-        font-size: 11.5px;
-        font-weight: 750;
+        color: #4fc2ff !important;
+
+        font-size: 10.5px;
+
+        font-weight: 800;
+
         text-transform: uppercase;
-        letter-spacing: .5px;
+
+        letter-spacing: .9px;
     }}
 
     .product-description {{
-        color: #b8c9d8;
+        color: #aebfd0 !important;
+
         font-size: 13px;
-        line-height: 1.55;
+
+        line-height: 1.6;
     }}
 
+    /* =========================================================
+       CATEGORY CHIPS
+       ========================================================= */
+
     .category-chip {{
-        background: rgba(255,255,255,.06);
-        border: 1px solid #2c5578;
-        border-radius: 12px;
-        padding: 15px 16px;
-        color: var(--mrpl-text);
-        font-weight: 700;
+        background:
+            linear-gradient(
+                145deg,
+                rgba(22,49,73,.82),
+                rgba(10,30,49,.90)
+            );
+
+        border: 1px solid rgba(80,151,199,.22);
+
+        border-radius: 13px;
+
+        padding: 16px;
+
+        color: #edf6fc !important;
+
+        font-weight: 750;
+
         text-align: center;
-        transition: all .15s ease;
+
+        box-shadow:
+            0 7px 18px rgba(0,0,0,.18);
+
+        transition:
+            transform .18s ease,
+            border-color .18s ease,
+            background .18s ease;
     }}
 
     .category-chip:hover {{
-        border-color: var(--mrpl-accent);
-        background: rgba(47, 155, 240, .10);
+        transform: translateY(-3px);
+
+        border-color: rgba(57,183,248,.50);
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(20,63,94,.95),
+                rgba(10,39,63,.95)
+            );
     }}
 
-    @media (max-width: 768px) {{
-        .block-container {{ padding: 1rem .8rem 1.5rem .8rem; }}
-        h1 {{ font-size: 1.8rem !important; line-height: 1.15; }}
-        h2 {{ font-size: 1.45rem !important; }}
-        h3 {{ font-size: 1.2rem !important; }}
-        .store-hero {{ padding: 28px; min-height: 255px; }}
-        .store-hero-title {{ font-size: 29px; }}
-        .store-hero-text {{ font-size: 14px; }}
-        .store-brand {{ font-size: 22px; }}
+    /* =========================================================
+       GLASS CONTAINERS
+       ========================================================= */
+
+    div[data-testid="stExpander"] {{
+        background: rgba(11,30,48,.72) !important;
+
+        border: 1px solid rgba(92,153,195,.18) !important;
+
+        border-radius: 13px !important;
+
+        box-shadow:
+            0 8px 22px rgba(0,0,0,.16);
     }}
+
+    /* =========================================================
+       SCROLLBAR
+       ========================================================= */
+
+    ::-webkit-scrollbar {{
+        width: 8px;
+        height: 8px;
+    }}
+
+    ::-webkit-scrollbar-track {{
+        background: #06111d;
+    }}
+
+    ::-webkit-scrollbar-thumb {{
+        background: #1d4f70;
+        border-radius: 10px;
+    }}
+
+    ::-webkit-scrollbar-thumb:hover {{
+        background: #287ba8;
+    }}
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 768px) {{
+
+        .block-container {{
+            padding: 1.1rem .8rem 2rem .8rem;
+        }}
+
+        h1 {{
+            font-size: 1.75rem !important;
+            line-height: 1.15;
+        }}
+
+        h2 {{
+            font-size: 1.4rem !important;
+        }}
+
+        h3 {{
+            font-size: 1.15rem !important;
+        }}
+
+        .store-header {{
+            padding: 14px 16px;
+            border-radius: 14px;
+        }}
+
+        .store-brand {{
+            font-size: 21px;
+        }}
+
+        .store-tagline {{
+            font-size: 10.5px;
+        }}
+
+        .store-hero {{
+            min-height: 270px;
+            padding: 30px 25px;
+            border-radius: 19px;
+        }}
+
+        .store-hero-title {{
+            font-size: 29px;
+            letter-spacing: -.6px;
+        }}
+
+        .store-hero-text {{
+            font-size: 13.5px;
+            line-height: 1.65;
+        }}
+
+        .store-section-title {{
+            font-size: 24px;
+        }}
+
+        div[data-testid="stMetric"] {{
+            padding: 15px;
+        }}
+
+        div[data-testid="stMetricValue"] {{
+            font-size: 25px !important;
+        }}
+    }}
+
+    /* =========================================================
+       SMALL PREMIUM DETAILS
+       ========================================================= */
+
+    .stProgress > div > div {{
+        background:
+            linear-gradient(
+                90deg,
+                #168fd7,
+                #35b9ff,
+                #19c89a
+            ) !important;
+    }}
+
+    .stSpinner > div {{
+        border-top-color: var(--mrpl-accent) !important;
+    }}
+
     </style>
     """,
     unsafe_allow_html=True
 )
-
 DB_PATH = "mrpl.db"
 
 
