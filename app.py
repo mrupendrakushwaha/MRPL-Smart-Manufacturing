@@ -886,7 +886,7 @@ st.markdown(
     header[data-testid="stHeader"] button[aria-label*="sidebar"],
     header[data-testid="stHeader"] button[title*="sidebar"],
     header[data-testid="stHeader"] button[aria-label*="Sidebar"],
-    header[data-testid="stHeader"] button[title*="Sidebar"] {
+    header[data-testid="stHeader"] button[title*="Sidebar"] {{
         width: 42px !important;
         height: 42px !important;
         min-width: 42px !important;
@@ -898,25 +898,25 @@ st.markdown(
         color: #d9edf9 !important;
         box-shadow: 0 6px 18px rgba(0,0,0,.22) !important;
         transition: all .18s ease !important;
-    }
+    }}
 
     header[data-testid="stHeader"] button[aria-label*="sidebar"]:hover,
     header[data-testid="stHeader"] button[title*="sidebar"]:hover,
     header[data-testid="stHeader"] button[aria-label*="Sidebar"]:hover,
-    header[data-testid="stHeader"] button[title*="Sidebar"]:hover {
+    header[data-testid="stHeader"] button[title*="Sidebar"]:hover {{
         background: linear-gradient(135deg, #147fb8, #0b4f7d) !important;
         border-color: #4bc3ff !important;
         color: #ffffff !important;
         transform: scale(1.04) !important;
-    }
+    }}
 
-    header[data-testid="stHeader"] button svg {
+    header[data-testid="stHeader"] button svg {{
         color: currentColor !important;
         fill: currentColor !important;
-    }
+    }}
 
     /* User card */
-    section[data-testid="stSidebar"] div[data-testid="stAlert"][kind="success"] {
+    section[data-testid="stSidebar"] div[data-testid="stAlert"][kind="success"] {{
         background: linear-gradient(
             135deg,
             rgba(15, 68, 72, .95),
@@ -925,15 +925,15 @@ st.markdown(
         border: 1px solid rgba(38, 205, 177, .30) !important;
         border-radius: 13px !important;
         box-shadow: 0 7px 20px rgba(0,0,0,.18) !important;
-    }
+    }}
 
-    section[data-testid="stSidebar"] div[data-testid="stAlert"][kind="success"] p {
+    section[data-testid="stSidebar"] div[data-testid="stAlert"][kind="success"] p {{
         color: #52d9ba !important;
         font-weight: 750 !important;
-    }
+    }}
 
     /* Role card */
-    section[data-testid="stSidebar"] div[data-testid="stAlert"][kind="info"] {
+    section[data-testid="stSidebar"] div[data-testid="stAlert"][kind="info"] {{
         background: linear-gradient(
             135deg,
             rgba(18, 54, 91, .95),
@@ -942,15 +942,15 @@ st.markdown(
         border: 1px solid rgba(51, 166, 237, .28) !important;
         border-radius: 13px !important;
         box-shadow: 0 7px 20px rgba(0,0,0,.18) !important;
-    }
+    }}
 
-    section[data-testid="stSidebar"] div[data-testid="stAlert"][kind="info"] p {
+    section[data-testid="stSidebar"] div[data-testid="stAlert"][kind="info"] p {{
         color: #65bff1 !important;
         font-weight: 700 !important;
-    }
+    }}
 
     /* Logout button */
-    section[data-testid="stSidebar"] .stButton > button {
+    section[data-testid="stSidebar"] .stButton > button {{
         background: linear-gradient(
             135deg,
             #147fbd,
@@ -962,9 +962,9 @@ st.markdown(
         color: #ffffff !important;
         font-weight: 800 !important;
         box-shadow: 0 7px 18px rgba(0,0,0,.22) !important;
-    }
+    }}
 
-    section[data-testid="stSidebar"] .stButton > button:hover {
+    section[data-testid="stSidebar"] .stButton > button:hover {{
         background: linear-gradient(
             135deg,
             #1a9ddd,
@@ -973,43 +973,43 @@ st.markdown(
         border-color: #5bc9ff !important;
         transform: translateY(-2px) !important;
         box-shadow: 0 10px 24px rgba(0,0,0,.30) !important;
-    }
+    }}
 
     /* Navigation heading and label */
-    section[data-testid="stSidebar"] .stRadio > label {
+    section[data-testid="stSidebar"] .stRadio > label {{
         color: #8faec4 !important;
         font-size: 11px !important;
         font-weight: 800 !important;
         text-transform: uppercase !important;
         letter-spacing: 1px !important;
-    }
+    }}
 
     /* Navigation items — compact professional menu */
-    section[data-testid="stSidebar"] [role="radiogroup"] > label {
+    section[data-testid="stSidebar"] [role="radiogroup"] > label {{
         background: rgba(255,255,255,.018) !important;
         border: 1px solid transparent !important;
         border-radius: 10px !important;
         padding: 8px 11px !important;
         margin-bottom: 4px !important;
         transform: none !important;
-    }
+    }}
 
-    section[data-testid="stSidebar"] [role="radiogroup"] > label:hover {
+    section[data-testid="stSidebar"] [role="radiogroup"] > label:hover {{
         background: rgba(21,151,229,.10) !important;
         border-color: rgba(55,177,245,.28) !important;
         transform: translateX(3px) !important;
-    }
+    }}
 
-    section[data-testid="stSidebar"] [role="radiogroup"] > label p {
+    section[data-testid="stSidebar"] [role="radiogroup"] > label p {{
         color: #cbd9e5 !important;
         font-size: 13.5px !important;
         font-weight: 650 !important;
-    }
+    }}
 
     /* Selected navigation item */
     section[data-testid="stSidebar"] [role="radiogroup"] > label:has(
         input[type="radio"]:checked
-    ) {
+    ) {{
         background: linear-gradient(
             90deg,
             rgba(21,151,229,.20),
@@ -1017,14 +1017,14 @@ st.markdown(
         ) !important;
         border-color: rgba(48,178,241,.35) !important;
         box-shadow: inset 3px 0 0 #1597e5 !important;
-    }
+    }}
 
     section[data-testid="stSidebar"] [role="radiogroup"] > label:has(
         input[type="radio"]:checked
-    ) p {
+    ) p {{
         color: #ffffff !important;
         font-weight: 800 !important;
-    }
+    }}
 
     </style>
     """,
