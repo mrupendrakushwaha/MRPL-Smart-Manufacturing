@@ -19,7 +19,6 @@ from zoneinfo import ZoneInfo
 
 st.set_page_config(
     page_title="MRPL Smart Manufacturing System",
-    page_icon="🏭",
     layout="wide"
 )
 
@@ -1111,7 +1110,7 @@ def render_products_page():
 
     st.markdown("""
     <div class="store-header">
-        <div class="store-brand">🏭 MRPL</div>
+        <div class="store-brand"> 🏭 MRPL</div>
         <div class="store-tagline">
             Mahakoshal Refractories • Industrial Refractory Solutions
         </div>
@@ -1286,7 +1285,7 @@ if "user" not in st.session_state:
 if not st.session_state.logged_in:
     st.markdown("---")
     st.markdown(
-    "<h1 style='text-align: center;'>🏭 MRPL Smart Manufacturing System</h1>",
+    "<h1 style='text-align: center;🏭MRPL Smart Manufacturing System</h1>",
     unsafe_allow_html=True
     )
 
@@ -1417,7 +1416,7 @@ selected_module = st.sidebar.radio("Select Module", allowed_modules) if allowed_
 if not allowed_modules:
     st.sidebar.warning("No modules assigned to this role.")
 
-st.title("🏭 MRPL Smart Manufacturing System")
+st.title(" 🏭 MRPL Smart Manufacturing System")
 
 # ------------------------------------------------------------
 # ADMIN / MANAGER MODULES
