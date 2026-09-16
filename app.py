@@ -1286,7 +1286,20 @@ if "user" not in st.session_state:
 if not st.session_state.logged_in:
     st.markdown("---")
     st.markdown(
-    "<h1 style='text-align: center;🏭MRPL Smart Manufacturing System</h1>",
+    """
+    <h1 style="
+        text-align: center;
+        font-size: 48px;
+        font-weight: 800;
+        color: #f1f5f9;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        line-height: 1.15;
+    ">
+        🏭 MRPL Smart Manufacturing<br>
+        System
+    </h1>
+    """,
     unsafe_allow_html=True
     )
 
