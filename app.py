@@ -1313,7 +1313,51 @@ if not st.session_state.logged_in:
             "🛍️ Our Products",
             use_container_width=True
         )
+    st.markdown("""
+<style>
+.client-link-box {
+    display: flex;
+    gap: 15px;
+    margin: 18px 0;
+}
 
+.client-link {
+    flex: 1;
+    display: block;
+    text-align: center;
+    padding: 16px 10px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #e53935, #b71c1c);
+    color: white !important;
+    text-decoration: none !important;
+    font-size: 18px;
+    font-weight: 700;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.client-link:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #ff5252, #c62828);
+}
+</style>
+
+<div class="client-link-box">
+
+<a class="client-link"
+   href="https://mahakoshalrefractories.com/clientele/"
+   target="_blank">
+   🤝 Our Clientele
+</a>
+
+<a class="client-link"
+   href="https://mahakoshalrefractories.com/"
+   target="_blank">
+   🏭 Mahakoshal Refractories
+</a>
+
+</div>
+""", unsafe_allow_html=True)
     # --------------------------------------------------------
     # OUR PRODUCTS
     # --------------------------------------------------------
