@@ -424,6 +424,36 @@ st.markdown(
         border-color: var(--mrpl-accent);
         background: rgba(47, 155, 240, .10);
     }}
+        /* ---------------- Sidebar Collapse Button ---------------- */
+
+    [data-testid="stSidebarCollapsedControl"] button {{
+        width: 46px !important;
+        height: 46px !important;
+        border-radius: 12px !important;
+        background: linear-gradient(135deg, #e31e24, #ff7a00) !important;
+        border: 1px solid rgba(255,255,255,.35) !important;
+        box-shadow: 0 6px 18px rgba(0,0,0,.35) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }}
+
+    [data-testid="stSidebarCollapsedControl"] button:hover {{
+        background: linear-gradient(135deg, #ff3b30, #ff9d00) !important;
+        transform: scale(1.05);
+    }}
+
+    [data-testid="stSidebarCollapsedControl"] button svg {{
+        display: none !important;
+    }}
+
+    [data-testid="stSidebarCollapsedControl"] button::after {{
+        content: "☰";
+        font-size: 25px;
+        font-weight: 900;
+        color: white;
+        line-height: 1;
+    }}
 
     @media (max-width: 768px) {{
         .block-container {{ padding: 1rem .8rem 1.5rem .8rem; }}
