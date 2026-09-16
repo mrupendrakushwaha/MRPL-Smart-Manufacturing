@@ -1439,6 +1439,60 @@ st.markdown("""
     🏭 MRPL Smart Manufacturing System
 </div>
 """, unsafe_allow_html=True)
+st.markdown("""
+<div style="
+    text-align:center;
+    margin: 25px auto 35px auto;
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+">
+    <div style="
+        font-size:28px;
+        font-weight:800;
+        color:#ff4b4b;
+        margin-bottom:20px;
+    ">
+        🤝 Our Trusted Clientele
+    </div>
+
+    <div style="
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:25px;
+        flex-wrap:wrap;
+    ">
+
+        <a href="https://mahakoshalrefractories.com/clientele/" target="_blank">
+            <img src="https://mahakoshalrefractories.com/wp-content/uploads/2025/11/3.png"
+                 style="width:120px;height:70px;object-fit:contain;background:white;border-radius:10px;padding:8px;">
+        </a>
+
+        <a href="https://mahakoshalrefractories.com/clientele/" target="_blank">
+            <img src="https://mahakoshalrefractories.com/wp-content/uploads/2025/08/Untitled-1_0003_jsw-logo-jv.png"
+                 style="width:120px;height:70px;object-fit:contain;background:white;border-radius:10px;padding:8px;">
+        </a>
+
+        <a href="https://mahakoshalrefractories.com/clientele/" target="_blank">
+            <img src="https://mahakoshalrefractories.com/wp-content/uploads/2025/11/1.png"
+                 style="width:120px;height:70px;object-fit:contain;background:white;border-radius:10px;padding:8px;">
+        </a>
+
+        <a href="https://mahakoshalrefractories.com/clientele/" target="_blank">
+            <img src="https://mahakoshalrefractories.com/wp-content/uploads/2025/08/Untitled-1_0020_logo-1.png"
+                 style="width:120px;height:70px;object-fit:contain;background:white;border-radius:10px;padding:8px;">
+        </a>
+
+        <a href="https://mahakoshalrefractories.com/clientele/" target="_blank">
+            <img src="https://mahakoshalrefractories.com/wp-content/uploads/2025/08/Untitled-1_0019_e8cc3d.png"
+                 style="width:120px;height:70px;object-fit:contain;background:white;border-radius:10px;padding:8px;">
+        </a>
+
+    </div>
+</div>
+""", unsafe_allow_html=True)
 # ------------------------------------------------------------
 # ADMIN / MANAGER MODULES
 # ------------------------------------------------------------
