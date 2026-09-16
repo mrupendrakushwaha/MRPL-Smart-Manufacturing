@@ -180,13 +180,7 @@ st.markdown(
     }}
 
     /* ---------------- Cards / containers ---------------- */
-    div[data-testid="stVerticalBlockBorderWrapper"] {{
-        background: linear-gradient(160deg, rgba(15, 38, 62, 0.92), rgba(9, 26, 44, 0.94));
-        border: 1px solid var(--mrpl-border);
-        border-radius: var(--mrpl-radius);
-        box-shadow: var(--mrpl-shadow);
-    }}
-
+    
     div[data-testid="stMetric"] {{
         background: linear-gradient(155deg, #0f2c4a, #0a1f36);
         border: 1px solid var(--mrpl-border);
