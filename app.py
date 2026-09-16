@@ -47,6 +47,37 @@ MRPL_BG_CSS = (
 st.markdown(
     f"""
     <style>
+/* MRPL SIDEBAR TOGGLE BUTTON */
+
+[data-testid="stSidebarCollapseButton"] {
+    background: linear-gradient(135deg, #e31e24, #ff7a00) !important;
+    border-radius: 12px !important;
+    padding: 6px !important;
+}
+
+/* Button */
+[data-testid="stSidebarCollapseButton"] button {
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    min-height: 46px !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Streamlit icon */
+[data-testid="stSidebarCollapseButton"] svg {
+    display: none !important;
+}
+
+/* New MRPL icon */
+[data-testid="stSidebarCollapseButton"] button::after {
+    content: "☰" !important;
+    color: white !important;
+    font-size: 25px !important;
+    font-weight: 900 !important;
+}
+
     :root {{
         --mrpl-bg: #120808;
         --mrpl-panel: #1c1010;
@@ -433,36 +464,6 @@ st.markdown(
         .store-hero-title {{ font-size: 29px; }}
         .store-hero-text {{ font-size: 14px; }}
         .store-brand {{ font-size: 22px; }}
-    }}
-/* ===== SIDEBAR COLLAPSE BUTTON ===== */
-
-    div[data-testid="stSidebarCollapseButton"] button {{
-        width: 48px !important;
-        height: 48px !important;
-        min-width: 48px !important;
-        min-height: 48px !important;
-
-        background: linear-gradient(135deg, #e31e24, #ff7a00) !important;
-        border: 2px solid #ffffff !important;
-        border-radius: 12px !important;
-
-        box-shadow: 0 6px 18px rgba(0,0,0,0.35) !important;
-    }}
-
-    div[data-testid="stSidebarCollapseButton"] button svg {{
-        display: none !important;
-    }}
-
-    div[data-testid="stSidebarCollapseButton"] button::after {{
-        content: "☰" !important;
-        font-size: 25px !important;
-        font-weight: 900 !important;
-        color: white !important;
-    }}
-
-    div[data-testid="stSidebarCollapseButton"] button:hover {{
-        background: linear-gradient(135deg, #ff3b30, #ff9500) !important;
-        transform: scale(1.05);
     }}
     </style>
     """,
