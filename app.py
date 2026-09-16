@@ -436,7 +436,6 @@ st.markdown(
         .store-brand {{ font-size: 22px; }}
     }}
     [data-testid="stSidebarCollapsedControl"] button {
-    background-color: #e31e24 !important;
     color: white !important;
     border-radius: 10px !important;
     width: 45px !important;
