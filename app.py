@@ -1290,11 +1290,20 @@ if not st.session_state.logged_in:
     <h1 style="
         text-align: center;
         font-size: 48px;
-        font-weight: 800;
-        color: #f1f5f9;
+        font-weight: 900;
         margin-top: 20px;
         margin-bottom: 30px;
         line-height: 1.15;
+        background: linear-gradient(
+            90deg,
+            #00c6ff,
+            #7c3aed,
+            #ff4ecd,
+            #ff9f43
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 25px rgba(0, 198, 255, 0.25);
     ">
         🏭 MRPL Smart Manufacturing<br>
         System
