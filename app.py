@@ -722,13 +722,14 @@ def init_db():
         return str(path) if path.exists() else ""
 
     def product_images(folder, filenames):
-        """Return all existing product images from a ROOT product folder."""
-        paths = []
-        for filename in filenames:
-            path = APP_DIR / folder / filename
-            if path.exists():
-                paths.append(str(path))
-        return ",".join(paths)
+    """Return GitHub Raw URLs for product images."""
+    paths = []
+
+    for filename in filenames:
+        github_path = f"{folder}/{filename}"
+        paths.append(_raw_github_url(github_path))
+
+    return ",".join(paths)
 
     product_refresh_key = "mrpl_official_products_v9_root_product_folders"
 
