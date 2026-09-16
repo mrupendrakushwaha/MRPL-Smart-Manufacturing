@@ -1487,10 +1487,17 @@ st.markdown("""
 # ------------------------------------------------------------
 
 if selected_module == "📊 Dashboard":
-    st.markdown(
-    '<div class="dashboard-title">📊 Management Dashboard</div>',
-    unsafe_allow_html=True
-    )
+    st.markdown("""
+<div style="
+    text-align:center;
+    font-size:32px;
+    font-weight:800;
+    color:#ff3333;
+    padding:12px 0 20px 0;
+">
+📊 Management Dashboard
+</div>
+""", unsafe_allow_html=True)
 
     raw_materials = load_data("raw_materials")
     production = load_data("production")
