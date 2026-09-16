@@ -1431,7 +1431,7 @@ selected_module = st.sidebar.radio("Select Module", allowed_modules) if allowed_
 
 if not allowed_modules:
     st.sidebar.warning("No modules assigned to this role.")
-
+st.header(____) 
 st.title(" 🏭 MRPL Smart Manufacturing System")
 
 # ------------------------------------------------------------
@@ -1439,7 +1439,10 @@ st.title(" 🏭 MRPL Smart Manufacturing System")
 # ------------------------------------------------------------
 
 if selected_module == "📊 Dashboard":
-    st.header("📊 Management Dashboard")
+    st.markdown(
+    '<div class="dashboard-title">📊 Management Dashboard</div>',
+    unsafe_allow_html=True
+    )
 
     raw_materials = load_data("raw_materials")
     production = load_data("production")
