@@ -19,6 +19,7 @@ from zoneinfo import ZoneInfo
 
 st.set_page_config(
     page_title="MRPL Smart Manufacturing System",
+    page_icon="🏭",
     layout="wide"
 )
 
