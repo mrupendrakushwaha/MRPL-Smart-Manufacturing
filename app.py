@@ -48,16 +48,16 @@ st.markdown(
     f"""
     <style>
     :root {{
-        --mrpl-bg: #f5f7fa;
+        --mrpl-bg: #fff5f5;
         --mrpl-panel: #ffffff;
-        --mrpl-panel-2: #f8fafc;
-        --mrpl-border: #dfe5ec;
-        --mrpl-border-soft: rgba(15,23,42,.10);
-        --mrpl-text: #172033;
-        --mrpl-muted: #64748b;
-        --mrpl-accent: #0066cc;
-        --mrpl-accent-2: #00a884;
-        --mrpl-gold: #d89b20;
+        --mrpl-panel-2: #fffafa;
+        --mrpl-border: #f0caca;
+        --mrpl-border-soft: rgba(180, 0, 0, 0.12);
+        --mrpl-text: #202020;
+        --mrpl-muted: #666666;
+        --mrpl-accent: #c62828;
+        --mrpl-accent-2: #e53935;
+        --mrpl-gold: #b8860b;
         --mrpl-radius: 14px;
         --mrpl-shadow: 0 10px 28px rgba(0,0,0,.28);
         --mrpl-font: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -74,9 +74,9 @@ st.markdown(
         background-image:
             linear-gradient(
                 180deg,
-                rgba(3, 14, 26, 0.93) 0%,
-                rgba(4, 18, 32, 0.96) 55%,
-                rgba(3, 14, 26, 0.98) 100%
+                rgba(255, 255, 255, 0.88) 0%,
+                rgba(255, 248, 248, 0.90) 55%,
+                rgba(255, 255, 255, 0.92) 100%
             ),
             {MRPL_BG_CSS};
         background-size: cover;
