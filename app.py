@@ -440,7 +440,6 @@ st.markdown(
     .stTextInput input,
     .stNumberInput input,
     .stDateInput input {
-        background-color: #102a43 !important;
         color: #ffffff !important;
         border: 2px solid #ff3b3b !important;
     }
