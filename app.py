@@ -880,6 +880,113 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# ============================================================
+# MRPL TARGET UI OVERRIDES
+# Light professional sidebar + premium collapse button.
+# IMPORTANT: Existing main background image and app logic remain unchanged.
+# ============================================================
+st.markdown(r"""
+<style>
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #ffffff 0%, #f6f9fd 100%) !important;
+    border-right: 1px solid #dce5ef !important;
+    box-shadow: 8px 0 28px rgba(10,35,65,.10) !important;
+}
+section[data-testid="stSidebar"] > div,
+section[data-testid="stSidebar"] > div > div {
+    background: transparent !important;
+}
+section[data-testid="stSidebar"] .stMarkdown h1,
+section[data-testid="stSidebar"] .stMarkdown h2,
+section[data-testid="stSidebar"] .stMarkdown h3 {
+    color: #102a4c !important;
+    -webkit-text-fill-color: #102a4c !important;
+}
+section[data-testid="stSidebar"] .stAlert {
+    background: #f8fbff !important;
+    border: 1px solid #dce8f5 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 5px 18px rgba(26,70,115,.08) !important;
+}
+section[data-testid="stSidebar"] .stRadio > label {
+    color: #6c7f95 !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: .9px !important;
+    text-transform: uppercase !important;
+}
+section[data-testid="stSidebar"] [role="radiogroup"] {
+    gap: 3px !important;
+}
+section[data-testid="stSidebar"] [role="radiogroup"] > label {
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: 12px !important;
+    padding: 8px 10px !important;
+    margin: 0 0 3px 0 !important;
+    transition: all .18s ease !important;
+}
+section[data-testid="stSidebar"] [role="radiogroup"] > label:hover {
+    background: #edf5ff !important;
+    border-color: #d5e6fa !important;
+    transform: translateX(2px) !important;
+}
+section[data-testid="stSidebar"] [role="radiogroup"] > label p {
+    color: #17345b !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+section[data-testid="stSidebar"] [role="radiogroup"] > label:has(input:checked) {
+    background: linear-gradient(90deg, #e2efff, #f0f7ff) !important;
+    border-color: #cfe3fb !important;
+    box-shadow: inset 3px 0 0 #2587ed !important;
+}
+section[data-testid="stSidebar"] [role="radiogroup"] > label:has(input:checked) p {
+    color: #0874dd !important;
+    font-weight: 750 !important;
+}
+section[data-testid="stSidebar"] [role="radiogroup"] input {
+    accent-color: #2587ed !important;
+}
+
+/* Premium blue double-chevron sidebar control */
+button[aria-label*="Collapse"],
+button[aria-label*="Expand"],
+[data-testid="stSidebarCollapseButton"] button {
+    width: 58px !important;
+    height: 38px !important;
+    min-width: 58px !important;
+    border-radius: 22px !important;
+    border: 1px solid rgba(255,255,255,.40) !important;
+    background: linear-gradient(135deg, #168df0, #126fd0) !important;
+    color: #fff !important;
+    box-shadow: 0 7px 18px rgba(20,118,210,.32) !important;
+    margin: 7px !important;
+}
+button[aria-label*="Collapse"] svg,
+button[aria-label*="Expand"] svg,
+[data-testid="stSidebarCollapseButton"] button svg {
+    color: #fff !important;
+    fill: #fff !important;
+    width: 21px !important;
+    height: 21px !important;
+}
+button[aria-label*="Collapse"]:hover,
+button[aria-label*="Expand"]:hover,
+[data-testid="stSidebarCollapseButton"] button:hover {
+    transform: scale(1.04) !important;
+    box-shadow: 0 9px 22px rgba(20,118,210,.42) !important;
+}
+
+@media (max-width: 768px) {
+    section[data-testid="stSidebar"] {
+        min-width: 285px !important;
+        max-width: 285px !important;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
 DB_PATH = "mrpl.db"
 
 
