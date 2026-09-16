@@ -1132,7 +1132,8 @@ def render_products_page():
     """, unsafe_allow_html=True)
 
     products_df = load_data("products", where="is_active = 1")
-
+    search_product = ""
+    selected_category = "All Products"
     if products_df.empty:
         st.info("No products available right now.")
         return
