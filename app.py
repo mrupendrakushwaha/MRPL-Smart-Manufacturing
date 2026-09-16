@@ -434,7 +434,7 @@ def init_db():
                 paths.append(str(path))
         return ",".join(paths)
 
-    product_refresh_key = "mrpl_official_products_v8_root_product_folders"
+    product_refresh_key = "mrpl_official_products_v9_root_product_folders"
 
     product_refreshed = cur.execute(
         "SELECT value FROM system_meta WHERE key = ?",
