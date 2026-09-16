@@ -541,13 +541,6 @@ def init_db():
                 "Spray-applied refractory mixes for repair, maintenance and lining applications.",
                 ""
             ),
-
-            (
-                "Other Refractory Products",
-                "Stainless Steel Anchors",
-                "Stainless steel refractory anchors used to provide mechanical support to refractory linings.",
-                ""
-            ),
         ]
 
         cur.executemany(
