@@ -723,13 +723,13 @@ def init_db():
 
     def product_images(folder, filenames):
     """Return GitHub Raw URLs for product images."""
-    paths = []
+        paths = []
 
-    for filename in filenames:
-        github_path = f"{folder}/{filename}"
-        paths.append(_raw_github_url(github_path))
+        for filename in filenames:
+            github_path = f"{folder}/{filename}"
+            paths.append(_raw_github_url(github_path))
 
-    return ",".join(paths)
+        return ",".join(paths)
 
     product_refresh_key = "mrpl_official_products_v9_root_product_folders"
 
