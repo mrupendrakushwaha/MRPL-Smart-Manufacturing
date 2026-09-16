@@ -1327,7 +1327,7 @@ if not st.session_state.logged_in:
     padding: 16px 10px;
     border-radius: 14px;
     background: linear-gradient(135deg, #e53935, #b71c1c);
-    color: white !important;
+    color: orange !important;
     text-decoration: none !important;
     font-size: 18px;
     font-weight: 700;
