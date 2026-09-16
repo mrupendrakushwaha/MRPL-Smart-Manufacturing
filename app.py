@@ -437,22 +437,22 @@ st.markdown(
     }}
     
     [data-testid="stSidebarCollapsedControl"] button {
-    background: #e31e24 !important;
-    color: white !important;
-    border-radius: 10px !important;
-    width: 45px !important;
-    height: 45px !important;
+        background: #e31e24 !important;
+        color: white !important;
+        border-radius: 10px !important;
+        width: 45px !important;
+        height: 45px !important;
     }
 
     [data-testid="stSidebarCollapsedControl"] button svg {
-    display: none !important;
+        display: none !important;
     }
 
     [data-testid="stSidebarCollapsedControl"] button::after {
-    content: "☰";
-    font-size: 25px;
-    font-weight: bold;
-    color: white;
+        content: "☰";
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
     }
     </style>
     """,
