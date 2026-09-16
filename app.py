@@ -434,7 +434,7 @@ st.markdown(
         .store-hero-title {{ font-size: 29px; }}
         .store-hero-text {{ font-size: 14px; }}
         .store-brand {{ font-size: 22px; }}
-    }
+    }}
     /* Sidebar toggle button */
 [data-testid="stSidebarCollapsedControl"] button {
     width: 55px !important;
@@ -453,7 +453,6 @@ st.markdown(
     background: linear-gradient(135deg, #ff3333, #ff8c00) !important;
     color: white !important;
 }
-    }
     </style>
     """,
     unsafe_allow_html=True
