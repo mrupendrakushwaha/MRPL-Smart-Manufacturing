@@ -1426,8 +1426,19 @@ selected_module = st.sidebar.radio("Select Module", allowed_modules) if allowed_
 if not allowed_modules:
     st.sidebar.warning("No modules assigned to this role.")
 
-st.title(" 🏭 MRPL Smart Manufacturing System")
-
+st.markdown("""
+<div style="
+    text-align: center;
+    font-size: 42px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ff0000, #ff4d4d, #ff9900);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 20px 0 30px 0;
+">
+    🏭 MRPL Smart Manufacturing System
+</div>
+""", unsafe_allow_html=True)
 # ------------------------------------------------------------
 # ADMIN / MANAGER MODULES
 # ------------------------------------------------------------
