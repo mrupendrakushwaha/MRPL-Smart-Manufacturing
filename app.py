@@ -244,6 +244,28 @@ st.markdown(
         fill: currentColor !important;
     }}
 
+    /* ---- Collapsed sidebar arrow toggle (top-left ">>" control) ---- */
+    [data-testid="collapsedControl"] {{
+        background: linear-gradient(135deg, #147fb8, #0b4f7d) !important;
+        border: 1px solid rgba(86,190,255,.55) !important;
+        border-radius: 10px !important;
+        box-shadow: 0 4px 14px rgba(0,0,0,.35) !important;
+        padding: 4px !important;
+        opacity: 1 !important;
+    }}
+
+    [data-testid="collapsedControl"] * {{
+        color: #ffffff !important;
+        fill: #ffffff !important;
+        opacity: 1 !important;
+    }}
+
+    [data-testid="collapsedControl"]:hover {{
+        background: linear-gradient(135deg, #1a9ddd, #086a9e) !important;
+        border-color: #4bc3ff !important;
+        transform: scale(1.05) !important;
+    }}
+
     /* ---- Unified profile card (avatar + name + role) ---- */
     .mrpl-profile-card {{
         display: flex;
