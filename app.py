@@ -2079,12 +2079,7 @@ if not st.session_state.logged_in:
         margin-top: 20px;
         margin-bottom: 30px;
         line-height: 1.15;
-        background: linear-gradient(
-            90deg,
-            #00c6ff,
-            #7c3aed,
-            #ff4ecd,
-            #ff9f43
+        color: #ff0000;
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
