@@ -510,8 +510,7 @@ st.markdown(
 
     .stTabs [aria-selected="true"] {{
         background: linear-gradient(
-            135deg, #138bd0, #07578c
-        ) !important;
+            135deg, #ef4444, #b91c1c) !important;
         color: #ffffff !important;
         box-shadow: 0 5px 14px rgba(0,0,0,.25);
     }}
