@@ -1144,33 +1144,6 @@ st.markdown(
     .stSpinner > div {{
         border-top-color: var(--mrpl-accent) !important;
     }}
-    /* ---- CRUD TABS: clear inactive tabs ---- */
-    .stTabs button[data-baseweb="tab"] {
-        opacity: 1 !important;
-        color: #b8c9d8 !important;
-        background: rgba(255, 255, 255, 0.05) !important;
-    }
-
-    .stTabs button[data-baseweb="tab"] * {
-        opacity: 1 !important;
-        color: #b8c9d8 !important;
-        -webkit-text-fill-color: #b8c9d8 !important;
-    }
-
-/* Active tab */
-    .stTabs button[data-baseweb="tab"][aria-selected="true"] {
-        background: linear-gradient(
-        135deg,
-        #ef4444,
-        #b91c1c
-        ) !important;
-        color: #ffffff !important;
-    }
-
-    .stTabs button[data-baseweb="tab"][aria-selected="true"] * {
-        color: #ffffff !important;
-        -webkit-text-fill-color: #ffffff !important;
-    }
     </style>
     """,
     unsafe_allow_html=True
