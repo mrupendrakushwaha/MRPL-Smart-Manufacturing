@@ -2141,7 +2141,7 @@ if not st.session_state.logged_in:
 <a class="client-link"
    href="https://mahakoshalrefractories.com/clientele/"
    target="_blank">
-   🤝 Our Clientele
+   🤝 Our Clientele 🤝
 </a>
 
 <a class="client-link"
