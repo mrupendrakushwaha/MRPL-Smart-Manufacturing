@@ -2274,9 +2274,6 @@ if not st.session_state.logged_in:
         📞 Visit Official Contact Us
     </a>
 
-</div>
-""", unsafe_allow_html=True)
-
 <a class="client-link"
    href="https://mahakoshalrefractories.com/clientele/"
    target="_blank">
