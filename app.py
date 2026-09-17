@@ -2079,12 +2079,9 @@ if not st.session_state.logged_in:
         margin-topp: 20px;
         margin-bottomm: 30px;
         line-heightt: 1.15;
-        backgroundd: linear-gradient(90deg, #35b9ff 0%, #19c89a 50%, #e7b75b 100%);
-        -webkit-background-clipp: text;
-        background-clipp: text;
-        -webkit-text-fill-colorr: transparent;
-        color: #35b9ff;
-        text-shadoww: 0 0 25px rgba(0, 198, 255, 0.25);
+        color: #ff0000 !important;
+        -webkit-text-fill-color: #ff0000 !important;
+        text-shadow: 0 0 12px rgba(255, 0, 0, 0.35);
      ">
         🏭 MRPL Smart Manufacturing<br>
         System
