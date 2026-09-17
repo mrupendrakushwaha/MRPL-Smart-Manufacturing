@@ -596,11 +596,22 @@ st.markdown(
        ========================================================= */
 
     button[data-baseweb="tab"] {{
-        color: #8fa7bb !important;
+        color: #d6e3ee !important;
+        opacity: 1 !important;
         font-weight: 700 !important;
         font-size: 13px !important;
         padding: 11px 18px !important;
         transition: all .18s ease;
+    }}
+
+    button[data-baseweb="tab"] p {{
+        color: #d6e3ee !important;
+        opacity: 1 !important;
+    }}
+
+    button[data-baseweb="tab"][aria-selected="true"] {{
+        color: #ffffff !important;
+        opacity: 1 !important;
     }}
 
     button[data-baseweb="tab"]:hover {{
