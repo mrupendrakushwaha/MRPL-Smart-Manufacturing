@@ -419,7 +419,7 @@ st.markdown(
         border-radius: var(--mrpl-radius);
 
         padding: 18px 24px;
-        margin: 6px 0 28px 0;
+        margin: 20px 0 28px 0;
 
         box-shadow: var(--mrpl-shadow);
     }}
