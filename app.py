@@ -94,9 +94,9 @@ st.markdown(
         background:
             linear-gradient(
                 135deg,
-                rgba(4,12,22,.55) 0%,
-                rgba(7,19,33,.45) 45%,
-                rgba(5,13,24,.55) 100%
+                rgba(6,20,38,.62) 0%,
+                rgba(9,35,58,.50) 45%,
+                rgba(5,13,24,.62) 100%
             ),
             {MRPL_BG_CSS};
 
@@ -827,9 +827,9 @@ st.markdown(
         background-image:
             linear-gradient(
                 100deg,
-                rgba(3,15,28,.55) 0%,
-                rgba(3,15,28,.40) 43%,
-                rgba(3,15,28,.20) 100%
+                rgba(4,18,34,.62) 0%,
+                rgba(6,28,48,.48) 43%,
+                rgba(8,35,55,.28) 100%
             ),
             {MRPL_BG_CSS};
 
