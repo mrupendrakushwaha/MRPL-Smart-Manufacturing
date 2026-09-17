@@ -514,7 +514,16 @@ st.markdown(
         color: #ffffff !important;
         box-shadow: 0 5px 14px rgba(0,0,0,.25);
     }}
+    .stTabs [data-baseweb="tab"]:not([aria-selected="true"]) {{
+    color: #b8c9d8 !important;
+    opacity: 1 !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    }}
 
+    .stTabs [data-baseweb="tab"]:not([aria-selected="true"]) p {{
+        color: #b8c9d8 !important;
+        opacity: 1 !important;
+    }}
     .stTabs [data-baseweb="tab-highlight"] {{
         display: none !important;
     }}
