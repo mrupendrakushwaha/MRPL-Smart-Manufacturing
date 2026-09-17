@@ -514,16 +514,7 @@ st.markdown(
         color: #ffffff !important;
         box-shadow: 0 5px 14px rgba(0,0,0,.25);
     }}
-    .stTabs [data-baseweb="tab"]:not([aria-selected="true"]) {{
-    color: #b8c9d8 !important;
-    opacity: 1 !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    }}
-
-    .stTabs [data-baseweb="tab"]:not([aria-selected="true"]) p {{
-        color: #b8c9d8 !important;
-        opacity: 1 !important;
-    }}
+    
     .stTabs [data-baseweb="tab-highlight"] {{
         display: none !important;
     }}
@@ -1153,7 +1144,33 @@ st.markdown(
     .stSpinner > div {{
         border-top-color: var(--mrpl-accent) !important;
     }}
+    /* ---- CRUD TABS: clear inactive tabs ---- */
+    .stTabs button[data-baseweb="tab"] {
+        opacity: 1 !important;
+        color: #b8c9d8 !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+    }
 
+    .stTabs button[data-baseweb="tab"] * {
+        opacity: 1 !important;
+        color: #b8c9d8 !important;
+        -webkit-text-fill-color: #b8c9d8 !important;
+    }
+
+/* Active tab */
+    .stTabs button[data-baseweb="tab"][aria-selected="true"] {
+        background: linear-gradient(
+        135deg,
+        #ef4444,
+        #b91c1c
+        ) !important;
+        color: #ffffff !important;
+    }
+
+    .stTabs button[data-baseweb="tab"][aria-selected="true"] * {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
