@@ -2137,6 +2137,145 @@ if not st.session_state.logged_in:
 </style>
 
 <div class="client-link-box">
+# --------------------------------------------------------
+# CONTACT US
+# --------------------------------------------------------
+.mrpl-contact-section {
+    margin-top: 35px;
+    padding: 30px 24px;
+    background: rgba(10, 10, 10, 0.96);
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.30);
+}
+
+.mrpl-contact-title {
+    color: #ffffff !important;
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.mrpl-contact-item {
+    color: #ffffff;
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.mrpl-contact-label {
+    color: #ef3b35 !important;
+    font-weight: 800;
+}
+
+.mrpl-contact-value {
+    color: #f2f2f2 !important;
+}
+
+.mrpl-contact-link {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.mrpl-contact-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.15);
+    margin: 25px 0;
+}
+
+.mrpl-contact-button {
+    display: block;
+    width: fit-content;
+    margin: 28px auto 5px auto;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #e53935, #b71c1c);
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.mrpl-contact-button:hover {
+    background: linear-gradient(135deg, #ff5252, #c62828);
+    transform: translateY(-2px);
+}
+</style>
+
+<div class="mrpl-contact-section">
+
+    <div class="mrpl-contact-title">
+        📞 Contact Us
+    </div>
+
+    <div class="mrpl-contact-item">
+        📍 <span class="mrpl-contact-label">
+        Address (Head Office + Katni Unit):
+        </span><br>
+        <span class="mrpl-contact-value">
+        Katay Ghat Road, Industrial Area, Katni
+        (Madhya Pradesh -483501) INDIA
+        </span>
+    </div>
+
+    <div class="mrpl-contact-item">
+        📍 <span class="mrpl-contact-label">
+        Address (Gudri Unit):
+        </span><br>
+        <span class="mrpl-contact-value">
+        Village Gudri Teshil Bahoriband, Gudri
+        (Madhya Pradesh -483501) INDIA
+        </span>
+    </div>
+
+    <div class="mrpl-contact-item">
+        📍 <span class="mrpl-contact-label">
+        Address (Bhachau Unit):
+        </span><br>
+        <span class="mrpl-contact-value">
+        R.S.No. 309/1, 297, 305, Kharoi Road,
+        Bhachau Taluka, Kachchh
+        (Gujarat -370140) INDIA
+        </span>
+    </div>
+
+    <div class="mrpl-contact-divider"></div>
+
+    <div class="mrpl-contact-item">
+        🏠 <span class="mrpl-contact-label">
+        Domestic Enquiry:
+        </span><br>
+        📞 <a class="mrpl-contact-link" href="tel:07622406394">
+        07622-406394
+        </a><br>
+        ✉️ <a class="mrpl-contact-link"
+        href="mailto:marketing@mahakoshal.in">
+        marketing@mahakoshal.in
+        </a>
+    </div>
+
+    <div class="mrpl-contact-item">
+        🌐 <span class="mrpl-contact-label">
+        Export Enquiry:
+        </span><br>
+        📞 <a class="mrpl-contact-link" href="tel:9300644329">
+        9300644329
+        </a><br>
+        ✉️ <a class="mrpl-contact-link"
+        href="mailto:export@mahakoshal.in">
+        export@mahakoshal.in
+        </a>
+    </div>
+
+    <a class="mrpl-contact-button"
+       href="https://mahakoshalrefractories.com/contact-us/"
+       target="_blank">
+        📞 Visit Official Contact Us
+    </a>
+
+</div>
+""", unsafe_allow_html=True)
 
 <a class="client-link"
    href="https://mahakoshalrefractories.com/clientele/"
