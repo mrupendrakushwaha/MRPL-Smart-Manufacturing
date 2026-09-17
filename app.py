@@ -2135,15 +2135,9 @@ if not st.session_state.logged_in:
     background: linear-gradient(135deg, #ff5252, #c62828);
 }
 </style>
-</div>
-""", unsafe_allow_html=True)
-
-
 # --------------------------------------------------------
 # CONTACT US
 # --------------------------------------------------------
-st.markdown(
-    """
     <style>
     .mrpl-contact-section {
         margin-top: 35px;
@@ -2264,7 +2258,7 @@ st.markdown(
            target="_blank">
             📞 Visit Official Contact Us
         </a>
-
+    <style>
     </div>
     """,
     unsafe_allow_html=True
