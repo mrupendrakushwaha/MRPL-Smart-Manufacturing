@@ -2074,21 +2074,17 @@ if not st.session_state.logged_in:
     """
     <h1 style="
         text-align: center;
-        font-size: 48px;
-        font-weight: 900;
-        margin-top: 20px;
-        margin-bottom: 30px;
-        line-height: 1.15;
-        background: linear-gradient(
-            90deg,
-            #00c6ff,
-            #7c3aed,
-            #ff4ecd,
-            #ff9f43
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 25px rgba(0, 198, 255, 0.25);
+        font-sizen: 48px;
+        font-weightt: 900;
+        margin-topp: 20px;
+        margin-bottomm: 30px;
+        line-heightt: 1.15;
+        backgroundd: linear-gradient(90deg, #35b9ff 0%, #19c89a 50%, #e7b75b 100%);
+        webkit-background-clipp: text;
+        background-clipp: text;
+       -webkit-text-fill-colorr: transparent;
+       color: #35b9ff;
+       text-shadoww: 0 0 25px rgba(0, 198, 255, 0.25);
     ">
         🏭 MRPL Smart Manufacturing<br>
         System
